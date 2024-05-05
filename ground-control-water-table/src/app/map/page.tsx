@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import { useState, useRef } from "react";
-import Map from "react-map-gl";
+import Map, { NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import classes from "./Page.modules.css";
 
@@ -20,6 +20,8 @@ export default function MapPage() {
 				maxZoom={20}
 				minZoom={3}
 			>
+                <GeolocateControl position="top-left" />
+				<NavigationControl position="top-left" />
             </Map>
 		</main>
 	);
