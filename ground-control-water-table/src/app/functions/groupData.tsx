@@ -17,18 +17,18 @@ export const groupData = (data) => {
     }
 
     // Adding 'mapItem' property to each object and mapItemDetails to the details object
-    const groupedMapMarkers = groundMatchingLocations.map((item, index) => ({
+    const groupedMapDetails = groundMatchingLocations.map((item, index) => ({
         ...item,
         mapItem: index,
         }));
-    console.log('NeilTest - groupedMapMarkers', groupedMapMarkers);
+    console.log('NeilTest - groupedMapDetails', groupedMapDetails);
 
     // Remove details section for the map markers
-    const groupedMapDetails = groupedMapMarkers.map(item => {
+    const groupedMapMarkers = groupedMapDetails.map(item => {
         const { details, ...dataWithoutDetails } = item;
         return dataWithoutDetails;
     });
-    console.log('NeilTest - groupedMapDetails', groupedMapDetails);
+    console.log('NeilTest - groupedMapMarkers', groupedMapMarkers);
 
     return { groupedMapDetails, groupedMapMarkers };
 };

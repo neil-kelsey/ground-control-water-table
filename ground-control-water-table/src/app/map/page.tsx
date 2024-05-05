@@ -14,11 +14,10 @@ export default function MapPage() {
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
     const [selectedMarker, setSelectedMarker] = useState(false);
     const [chartDetailsData, setChartDetailsData] = useState([]);
+    const [groupedMapDetails, setGroupedMapDetails] = useState([]);
     const [groupedMapMarkers, setGroupedMapMarkers] = useState([]);
 	const mapRef = useRef(null);
     console.log('NeilTest - selectedMarker', selectedMarker);
-
-    console.log('NeilTest - groupedMapMarkers', groupedMapMarkers);
 
     useEffect(() => {
         const data = decodeAndMutateData(riverSensorData);
@@ -27,11 +26,18 @@ export default function MapPage() {
         // Now you have access to both groupedMapDetails and groupedMapMarkers
         console.log('NeilTest - Retrieved groupedMapDetails:', groupedMapDetails);
         console.log('NeilTest - Retrieved groupedMapMarkers:', groupedMapMarkers);
+        setGroupedMapDetails(groupedMapDetails);
         setGroupedMapMarkers(groupedMapMarkers);
     }, []); // Empty dependency array to run the effect only once
 
-    const buttonClickHandler = (e, item, index) => {
+    const buttonClickHandler = (e, group, index) => {
         console.log('NeilTest - buttonClickHandler e', e);
+        console.log('NeilTest - buttonClickHandler group', group);
+        console.log('NeilTest - buttonClickHandler mapItem', group.mapItem);
+        console.log('NeilTest - buttonClickHandler groupedMapDetails', groupedMapDetails);
+        const filteredData = groupedMapDetails.filter(item => item.mapItem === group.mapItem);
+        const detailsOnly = filteredData.map(item => item.details);
+        console.log('NeilTest - detailsOnly', detailsOnly);
 
         // Toggle the pop ups visibility
         selectedMarker ? setSelectedMarker(false) : setSelectedMarker(true);
@@ -71,7 +77,7 @@ export default function MapPage() {
                 {selectedMarker ? (
                     <div className="pop-up">
                         <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
-                        <Chart />
+                        {groupedMapDetails ? <Chart data={groupedMapDetails} /> : <></>}
                     </div>
                 ) : console.log('NeilTest - no popup')}
             </Map>
