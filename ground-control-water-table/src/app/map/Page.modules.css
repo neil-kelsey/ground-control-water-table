@@ -4,3 +4,19 @@
     height:100vh;
     width: 100vw;
 }
+
+/* These should be moved to their own chart modules css or popup component modules css */
+
+.pop-up {
+    position: relative;
+    width: calc(100vw - 80px);
+    height: calc(100vh - 80px);
+    background: #fff;
+    margin: 30px;
+    padding: 30px;
+    color: #000;
+}
+
+.close {
+	float: right;
+}

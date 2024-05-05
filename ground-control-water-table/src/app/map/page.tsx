@@ -31,7 +31,14 @@ export default function MapPage() {
 
     const buttonClickHandler = (e, item, index) => {
         console.log('NeilTest - buttonClickHandler e', e);
+
+        // Toggle the pop ups visibility
+        selectedMarker ? setSelectedMarker(false) : setSelectedMarker(true);
     };
+
+    const closeClickHandler = () => {
+        setSelectedMarker(false)
+    }
 
 	return (
 		<main className="map-wrapper">
@@ -60,6 +67,11 @@ export default function MapPage() {
 						</Marker>
 					);
 				})}
+                {selectedMarker ? (
+                    <div className="pop-up">
+                        <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
+                    </div>
+                ) : console.log('NeilTest - no popup')}
             </Map>
 		</main>
 	);
