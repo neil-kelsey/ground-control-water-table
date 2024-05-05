@@ -7,5 +7,11 @@ export const decodeAndMutateData = (riverSensorData) => {
         };
     });
 
-    return decodedData;
+    // We don't need the JSON item 'payload' anymore so let's delete it
+    const removePayload = decodedData.map(item => {
+        const { payload, ...dataWithoutPayload } = item;
+        return dataWithoutPayload;
+    });
+
+    return removePayload;
 };
