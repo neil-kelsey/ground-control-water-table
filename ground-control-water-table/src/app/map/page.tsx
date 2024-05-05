@@ -29,6 +29,10 @@ export default function MapPage() {
         setGroupedMapMarkers(groupedMapMarkers);
     }, []); // Empty dependency array to run the effect only once
 
+    const buttonClickHandler = (e, item, index) => {
+        console.log('NeilTest - buttonClickHandler e', e);
+    };
+
 	return (
 		<main className="map-wrapper">
             <h1>Map page</h1>
@@ -46,7 +50,13 @@ export default function MapPage() {
                 {groupedMapMarkers.map((item, index) => {
 					return (
 						<Marker key={index} longitude={item.longitude} latitude={item.latitude}>
-                            <FaMapMarkerAlt size={30} color="red" />
+                            <button
+								type="button"
+								className="cursor-pointer"
+								onClick={(e) => buttonClickHandler(e, item, index)}
+							>
+								{<FaMapMarkerAlt size={30} color="red" />}
+							</button>
 						</Marker>
 					);
 				})}
