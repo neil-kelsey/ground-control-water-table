@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 const TableComponent  = ({ data }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedSensorId, setSelectedSensorId] = useState('');
+    const [visibleRows, setVisibleRows] = useState({});
 
     // Filter data based on search term and selected sensor ID
     const filteredData = data.filter(item => {
@@ -12,6 +13,13 @@ const TableComponent  = ({ data }) => {
         const matchesSensorId = selectedSensorId ? item.sensorId === selectedSensorId : true;
         return matchesSearchTerm && matchesSensorId;
     });
+    // Function to toggle visibility for a specific item
+    const toggleVisibility = itemId => {
+        setVisibleRows(prevState => ({
+        ...prevState,
+        [itemId]: !prevState[itemId] || false,
+        }));
+    };
     return (
         <div>
             {/* Start Search and filter panel */}
@@ -51,12 +59,12 @@ const TableComponent  = ({ data }) => {
                         <td>{item.latitude}, {item.longitude}</td>
                         <td>{item.sensorId}</td>
                         <td>
-                        <p>Show details</p>
+                            <p onClick={() => toggleVisibility(item.id)}>Show details</p>
                         </td>
                     </tr>
-                    {Object.entries(item.details).map(([key, value]) => (
-                        <tr>
-                        <td colSpan={4} key={key}>
+                    {visibleRows[item.id] && Object.entries(item.details).map(([key, value]) => (
+                        <tr key={`${item.id}-${key}`}>
+                        <td colSpan={4}>
                             <strong>{key}:</strong> 
                             {typeof value === 'object' ? JSON.stringify(value) : value}
                         </td>
