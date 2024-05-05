@@ -8,6 +8,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import riverSensorData from '../data/river_sensor_data.json';
 import { decodeAndMutateData } from "../functions/decodeAndMutateData";
 import { groupData } from "../functions/groupData";
+import Chart from "../components/chart";
 
 export default function MapPage() {
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -70,6 +71,7 @@ export default function MapPage() {
                 {selectedMarker ? (
                     <div className="pop-up">
                         <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
+                        <Chart />
                     </div>
                 ) : console.log('NeilTest - no popup')}
             </Map>
