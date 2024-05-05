@@ -4,17 +4,21 @@ import { useState, useRef, useEffect } from "react";
 import Map, { Marker, Popup, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import classes from "./Page.modules.css";
-import airports from "../data/airports.json";
-import MapMarker from "../components/mapMarker";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import riverSensorData from '../data/river_sensor_data.json';
-import { decodeAndMutateData } from '../functions/decodeAndMutateData';
-import { groupData } from '../functions/groupData';
+import { decodeAndMutateData } from "../functions/decodeAndMutateData";
+import { groupData } from "../functions/groupData";
 
 export default function MapPage() {
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
-	const [selectedMarker, setSelectedMarker] = useState(null);
+    const [selectedMarker, setSelectedMarker] = useState(false);
+    const [chartDetailsData, setChartDetailsData] = useState([]);
+    const [groupedMapMarkers, setGroupedMapMarkers] = useState([]);
 	const mapRef = useRef(null);
-    const [data, setData] = useState()
+    console.log('NeilTest - selectedMarker', selectedMarker);
+
+    console.log('NeilTest - groupedMapMarkers', groupedMapMarkers);
+
     useEffect(() => {
         const data = decodeAndMutateData(riverSensorData);
         console.log('NeilTest - data', data);
@@ -22,7 +26,7 @@ export default function MapPage() {
         // Now you have access to both groupedMapDetails and groupedMapMarkers
         console.log('NeilTest - Retrieved groupedMapDetails:', groupedMapDetails);
         console.log('NeilTest - Retrieved groupedMapMarkers:', groupedMapMarkers);
-        // setData(data)
+        setGroupedMapMarkers(groupedMapMarkers);
     }, []); // Empty dependency array to run the effect only once
 
 	return (
@@ -39,10 +43,10 @@ export default function MapPage() {
 			>
                 <GeolocateControl position="top-left" />
 				<NavigationControl position="top-left" />
-                {airports.map((airport, index) => {
+                {groupedMapMarkers.map((item, index) => {
 					return (
-						<Marker key={index} longitude={airport.lon} latitude={airport.lat}>
-							<MapMarker size={30} color="tomato" />
+						<Marker key={index} longitude={item.longitude} latitude={item.latitude}>
+                            <FaMapMarkerAlt size={30} color="red" />
 						</Marker>
 					);
 				})}
