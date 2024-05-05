@@ -1,21 +1,28 @@
 "use client"; // This is a client component
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Map, { Marker, Popup, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import classes from "./Page.modules.css";
 import airports from "../data/airports.json";
 import MapMarker from "../components/mapMarker";
+import riverSensorData from '../data/river_sensor_data.json';
+import { decodeAndMutateData } from '../functions/decodeAndMutateData';
 
 export default function MapPage() {
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
 	const [selectedMarker, setSelectedMarker] = useState(null);
 	const mapRef = useRef(null);
+    const [data, setData] = useState()
+    useEffect(() => {
+        const data = decodeAndMutateData(riverSensorData);
+        console.log('NeilTest - data', data);
+        setData(data)
+    }, []); // Empty dependency array to run the effect only once
 
 	return (
 		<main className="map-wrapper">
             <h1>Map page</h1>
-            <MapMarker />
 			<Map
                 ref={mapRef}
 				mapboxAccessToken={mapboxToken}
