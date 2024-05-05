@@ -13,5 +13,20 @@ export const decodeAndMutateData = (riverSensorData) => {
         return dataWithoutPayload;
     });
 
-    return removePayload;
+    // Moving transmitted at item in to the details section so each details section will have the associated date
+    const moveTransmittedAt = removePayload.map(item => {
+        const { transmittedAt, ...rest } = item;
+        return {
+        ...rest,
+        details: {
+            ...rest.details,
+            transmittedAt
+        }
+        };
+    });
+
+    // Sort the data based on the 'date' property
+    const sortedByDateData = [...moveTransmittedAt].sort((a, b) => new Date(a.details.transmittedAt.iso) - new Date(b.details.transmittedAt.iso));
+
+    return sortedByDateData;
 };
