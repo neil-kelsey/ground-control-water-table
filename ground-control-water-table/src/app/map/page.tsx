@@ -8,6 +8,7 @@ import airports from "../data/airports.json";
 import MapMarker from "../components/mapMarker";
 import riverSensorData from '../data/river_sensor_data.json';
 import { decodeAndMutateData } from '../functions/decodeAndMutateData';
+import { groupData } from '../functions/groupData';
 
 export default function MapPage() {
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
@@ -17,7 +18,11 @@ export default function MapPage() {
     useEffect(() => {
         const data = decodeAndMutateData(riverSensorData);
         console.log('NeilTest - data', data);
-        setData(data)
+        const { groupedMapDetails, groupedMapMarkers } = groupData(data); // Call the groupData function with your data
+        // Now you have access to both groupedMapDetails and groupedMapMarkers
+        console.log('NeilTest - Retrieved groupedMapDetails:', groupedMapDetails);
+        console.log('NeilTest - Retrieved groupedMapMarkers:', groupedMapMarkers);
+        // setData(data)
     }, []); // Empty dependency array to run the effect only once
 
 	return (
