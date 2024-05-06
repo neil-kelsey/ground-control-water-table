@@ -18,6 +18,8 @@ const Chart = ({ data }) => {
         data: [], // initilize with empty array
         series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
     });
+
+    console.log('NeilTest - temperatureChartData', temperatureChartData);
     
     const [chartOptions, setChartOptions] = useState({
         // Data: Data to be displayed in the chart
@@ -66,6 +68,18 @@ const Chart = ({ data }) => {
             });
         });
         console.log('NeilTest - filterClickHandler - filteredData', filteredData);
+
+        // This next bit is a bit hacky
+        // There's a bug in filteredData where the first array item is returned empty
+        // I couldn't figure out why, so I've sliced it off
+        const filteredDataWithoutFirstItem = filteredData.slice(1);
+        console.log('NeilTest - filterClickHandler - filteredDataWithoutFirstItem', filteredDataWithoutFirstItem);
+
+        setTemperatureChartData(prevChart => ({
+            ...prevChart,
+            data: filteredDataWithoutFirstItem,
+            series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
+        }))
     }
 
     return (
@@ -91,7 +105,7 @@ const Chart = ({ data }) => {
             </div>
             <div className="main">
                 <div className="fullHeight">
-                    <span>Temperature<AgChartsReact options={chartOptions} /></span>
+                    { temperatureChartData ? <span>Temperature<AgChartsReact options={temperatureChartData} /></span> : <></> }
                 </div>
             </div>
         </div>
