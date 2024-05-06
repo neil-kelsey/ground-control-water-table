@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { debounce } from 'lodash';
 import DateRange from './dateRange';
+import TableFilter from './tableFilter';
 
 const TableComponent = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -72,29 +73,20 @@ const TableComponent = ({ data }) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
-  console.log('NeilTest - currentItems', currentItems)
   const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
     <div>
-        {/* Start Search and filter panel */}
-        {/* Fill make this a separate component later */}
-      <div>
-        <input
-          type="text"
-          placeholder="Search by ID"
-          onChange={e => handleSearchChange(e.target.value)}
-        />
-        <select
-          value={selectedSensorId}
-          onChange={e => setSelectedSensorId(e.target.value)}
-        >
-          <option value="">All Sensor IDs</option>
-          {Array.from(new Set(data.map(item => item.sensorId))).map(sensorId => (
-            <option key={sensorId} value={sensorId}>{sensorId}</option>
-          ))}
-        </select>
-        <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
-      </div>
+      <TableFilter
+        searchTerm={searchTerm}
+        selectedSensorId={selectedSensorId}
+        startDate={startDate}
+        endDate={endDate}
+        handleSearchChange={handleSearchChange}
+        handleSensorIdChange={setSelectedSensorId}
+        handleStartDateChange={setStartDate}
+        handleEndDateChange={setEndDate}
+        data={data}
+      />
       {/* End of Search and filter panel */}
       <table>
         <thead>
