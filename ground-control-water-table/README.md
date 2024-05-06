@@ -14,37 +14,13 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Things missing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-
-
-
-Things missing
-
-Functionality
+### Functionality
 - The main functionality missing is URL params so the user could share pages / bookmark them etc
-- Map data doesn't work on Alarm and State, this is because the data is boolean, you can display boolean data in AG Charts but I didn't implement this in time
+- Map chart data doesn't work on Alarm and State, this is because the data is boolean, you can display boolean data in AG Charts but I didn't implement this in time
 - When you open the data range you have to press the close button again to close the panel, this is kind of annoying - I would implement a event listener and if the user clicks anywhere that isn't the panel then we close the panel
-- Language strings - it's annoying having strings everywhere, I would rip them all out and add language strings, also I had some cool ideas for right to left languages and this project is built with that in mind so I could easily implement it
+- Language strings - it's annoying having text strings everywhere, I would rip them all out and add language strings, also I had some cool ideas for right to left languages and this project is built with that in mind so I could easily implement it
 - Unit tests!
 - More componentization - I've made the table in to a component but really I'd like to have a table row component, maybe a table header component and so on
 - I wish I'd changed the time format to something more human readable
@@ -58,7 +34,7 @@ Functionality
 - Show date range buttons could benifit from a calendar icon
 
 
-Styling
+### Styling
 - I would like to refine the sensor select element - the styling could be improved, the drop down items are all very squashed together
 - I would have liked to implemented the language select drop down menu and at a stretch actual language selection
 - A Login holding page for the account icon would have also been nice
@@ -68,8 +44,7 @@ Styling
 
 
 
+### I'll call it a day on this project when
 
-
-Move table to /
-mobile
-one unit test
+- mobile styling is done
+- We have at least one unit test

@@ -27,7 +27,7 @@ const Header = (props) => {
                     </div>
                     <div className="col-md-6 text-align-center">
                         <ul className="main-menu">
-                            <li className={pathname === "/table" ? "selected" : ""}><Link key={"/table"} href={"/table"}>Home</Link></li>
+                            <li className={pathname === "/" ? "selected" : ""}><Link key={"/"} href={"/"}>Home</Link></li>
                             <li className={pathname === "/map" ? "selected" : ""}><Link key={"/map"} href={"/map"}>Map</Link></li>
                             <li className={pathname === "/contact" ? "selected" : ""}><Link key={"/contact"} href={"/contact"}>Contact</Link></li>
                         </ul>
