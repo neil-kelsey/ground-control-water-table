@@ -29,7 +29,8 @@ body {
 }
 
 ul {
-  margin:0;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -121,6 +122,11 @@ th {
 
 /* End of html tag styles */
 
+.capitilization
+{
+  text-transform: capitalize;
+}
+
 .link {
   cursor: pointer;
   color: var(--hyperlink);
@@ -162,7 +168,7 @@ th {
 }
 
 .container {
-  width:1280px;
+  max-width:1260px;
   height:100%;
   margin:0 auto;
 }

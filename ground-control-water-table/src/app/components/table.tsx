@@ -104,7 +104,7 @@ const TableComponent = ({ data }) => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Location</th>
+            <th>Location (Lat, Long)</th>
             <th>Sensor ID</th>
             <th>Date</th>
             <th>Show details</th>
@@ -126,8 +126,11 @@ const TableComponent = ({ data }) => {
                 <tr className="table-details" key={`${item.id}-${key}`}>
                   <td colSpan={5}>
                     <span className="margin-left-lg">
-                      <strong>{key}:</strong> 
-                      {typeof value === 'object' ? JSON.stringify(value) : value}
+                      <strong className="capitilization">{key}: </strong>
+                      {/* Temperature, height, speed, battery and oxygen as objects so handle the data in one way for them */}
+                      {typeof value === 'object' ? `${value.value}${value.unit}` : value}
+                      {/* Alarm is a boolean */}
+                      {typeof value === 'boolean' ? value.toString() : <></>}
                     </span>
                   </td>
                 </tr>
