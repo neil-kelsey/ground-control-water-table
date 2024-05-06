@@ -72,6 +72,7 @@ const TableComponent = ({ data }) => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  console.log('NeilTest - currentItems', currentItems)
   const paginate = pageNumber => setCurrentPage(pageNumber);
   return (
     <div>

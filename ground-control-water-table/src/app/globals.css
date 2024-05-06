@@ -31,3 +31,26 @@ body {
     text-wrap: balance;
   }
 }
+
+.fullHeight {
+  height:100vh
+}
+
+.left {
+  float:left;
+  width:20%;
+  background: #ff5500;
+}
+
+.main {
+  float:left;
+  width:75%;
+  background: #00FF00;
+}
+
+.date-picker {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+}

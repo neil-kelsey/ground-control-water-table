@@ -16,6 +16,7 @@ export default function MapPage() {
     const [chartDetailsData, setChartDetailsData] = useState([]);
     const [groupedMapDetails, setGroupedMapDetails] = useState([]);
     const [groupedMapMarkers, setGroupedMapMarkers] = useState([]);
+    const [chartMapDetails, setChartMapDetails] = useState([]);
 	const mapRef = useRef(null);
     console.log('NeilTest - selectedMarker', selectedMarker);
 
@@ -34,10 +35,17 @@ export default function MapPage() {
         console.log('NeilTest - buttonClickHandler e', e);
         console.log('NeilTest - buttonClickHandler group', group);
         console.log('NeilTest - buttonClickHandler mapItem', group.mapItem);
+        // console.log('NeilTest - buttonClickHandler data', data);
         console.log('NeilTest - buttonClickHandler groupedMapDetails', groupedMapDetails);
         const filteredData = groupedMapDetails.filter(item => item.mapItem === group.mapItem);
+        console.log('NeilTest - filteredData', filteredData);
+
+
+
         const detailsOnly = filteredData.map(item => item.details);
         console.log('NeilTest - detailsOnly', detailsOnly);
+
+        setChartMapDetails(detailsOnly);
 
         // Toggle the pop ups visibility
         selectedMarker ? setSelectedMarker(false) : setSelectedMarker(true);
@@ -77,7 +85,7 @@ export default function MapPage() {
                 {selectedMarker ? (
                     <div className="pop-up">
                         <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
-                        {groupedMapDetails ? <Chart data={groupedMapDetails} /> : <></>}
+                        {chartMapDetails ? <Chart data={chartMapDetails} /> : <></>}
                     </div>
                 ) : console.log('NeilTest - no popup')}
             </Map>
