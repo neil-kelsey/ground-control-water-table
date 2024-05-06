@@ -18,6 +18,30 @@ const Chart = ({ data }) => {
         data: [], // initilize with empty array
         series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
     });
+    const [batteryChartData, setBatteryChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'bar', xKey: 'date', yKey: 'battery' }]
+    });
+    const [speedChartData, setSpeedChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'speed' }]
+    });
+    const [alarmChartData, setAlarmChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'alarm' }]
+    });
+    const [stateChartData, setStateChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'state' }]
+    });
+    const [heightChartData, setHeightChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'height' }]
+    });
+    const [oxygenChartData, setOxygenChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'oxygen' }]
+    });
 
     console.log('NeilTest - temperatureChartData', temperatureChartData);
     
@@ -75,11 +99,61 @@ const Chart = ({ data }) => {
         const filteredDataWithoutFirstItem = filteredData.slice(1);
         console.log('NeilTest - filterClickHandler - filteredDataWithoutFirstItem', filteredDataWithoutFirstItem);
 
-        setTemperatureChartData(prevChart => ({
-            ...prevChart,
-            data: filteredDataWithoutFirstItem,
-            series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
-        }))
+        { itemName === 'Temperature' ? 
+            setTemperatureChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
+            }))
+        : <></> }
+
+        { itemName === 'Battery' ? 
+            setBatteryChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'bar', xKey: 'date', yKey: 'battery' }]
+            }))
+        : <></> }
+
+        { itemName === 'Speed' ? 
+            setSpeedChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'line', xKey: 'date', yKey: 'speed' }]
+            }))
+        : <></> }
+
+        { itemName === 'Alarm' ? 
+            setAlarmChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'bar', xKey: 'date', yKey: 'alarm' }]
+            }))
+        : <></> }
+
+        { itemName === 'State' ? 
+            setStateChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'bar', xKey: 'date', yKey: 'state' }]
+            }))
+        : <></> }
+
+        { itemName === 'Height' ? 
+            setHeightChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'bar', xKey: 'date', yKey: 'height' }]
+            }))
+        : <></> }
+
+        { itemName === 'Oxygen' ? 
+            setOxygenChartData(prevChart => ({
+                ...prevChart,
+                data: filteredDataWithoutFirstItem,
+                series: [{ type: 'bar', xKey: 'date', yKey: 'oxygen' }]
+            }))
+        : <></> }
     }
 
     return (
@@ -105,7 +179,13 @@ const Chart = ({ data }) => {
             </div>
             <div className="main">
                 <div className="fullHeight">
-                    { temperatureChartData ? <span>Temperature<AgChartsReact options={temperatureChartData} /></span> : <></> }
+                    {chartType === 'Temperature' && temperatureChartData ? <span>Temperature<AgChartsReact options={temperatureChartData} /></span> : <></>}
+                    {chartType === 'Battery' && batteryChartData ? <span>Battery<AgChartsReact options={batteryChartData} /></span> : <></>}
+                    {chartType === 'Speed' && speedChartData ? <span>Speed<AgChartsReact options={speedChartData} /></span> : <></>}
+                    {chartType === 'Alarm' && alarmChartData ? <span>Alarm<AgChartsReact options={alarmChartData} /></span> : <></>}
+                    {chartType === 'State' && stateChartData ? <span>State<AgChartsReact options={stateChartData} /></span> : <></>}
+                    {chartType === 'Height' && heightChartData ? <span>Height<AgChartsReact options={heightChartData} /></span> : <></>}
+                    {chartType === 'Oxygen' && oxygenChartData ? <span>Oxygen<AgChartsReact options={oxygenChartData} /></span> : <></>}
                 </div>
             </div>
         </div>
