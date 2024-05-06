@@ -1,36 +1,213 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  /* Padding and margin variables */
+  --size-xs: 3px;
+  --size-sm: 5px;
+  --size-md: 10px;
+
+  /* Colour variables */
+  --light-grey: #adc3b6;
+  --dark-grey: #444;
+  --black: #000;
+
+  /* Curved corners variables */
+  --curved-corners-radius-md: 15px;
+  --curved-corners-radius-sm: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/* Start of html tag styles */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin:0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+ul {
+  margin:0;
 }
+
+a {
+  color: var(--dark-grey);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--black);
+  text-decoration: underline;
+}
+
+/* End of html tag styles */
+
+.selected {
+  font-weight: bold;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.container {
+  width:1280px;
+  margin:0 auto;
+}
+
+/* TODO - Move these header styles in to a header module CSS */
+
+.header {
+  padding: var(--size-sm) 0;
+  border-bottom:1px solid var(--light-grey);
+}
+
+.header h1 {
+  display: flex;
+  align-items: center; 
+  font-weight: 500;
+  font-size:18px;
+  color: var(--dark-grey);
+  margin:0;
+}
+
+.header h1 img {
+  margin-right: var(--size-md);
+}
+
+.header .header-icons {
+  filter: invert(44%) sepia(89%) saturate(2582%) hue-rotate(164deg) brightness(99%) contrast(101%);
+  margin-top: var(--size-xs);
+}
+
+/* Start of padding and margin */
+
+/* In a 'real' project I'd likely have a whole set of these for eg margin-top-sm, padding-bottom-lg etc but for this I'm just creating what I need */
+
+.margin-right-sm {
+  margin-right: var(--size-sm)
+}
+
+/* End of padding and margin overwrites */
+
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width:100%;
+}
+
+.main-menu {
+  margin-top: var(--size-sm);
+  list-style: none;
+}
+
+.main-menu li {
+  display:inline;
+  margin:0 var(--size-md);
+}
+
+/* Start of responsive grid system */
+
+/* Could be a fully fledge grid system - but just writting what I need for now */
+
+/* Here are my breakpoint sizes
+xs- 0 — 480px for mobile devices
+sm- 481px — 768px for iPads & tablets
+md - 769px — 1024px for small screens like laptop
+lg -1025px — 1200px for large screens like Desktops
+xl- 1201px and above for extra large screens like TV. */
+
+.row {
+  width:100%;
+  display:table;
+}
+
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  vertical-align: top;
+  display: table-cell;
+  padding: 0 8px;
+}
+
+.col-md-1 {
+  width: 8.33%;
+}
+
+.col-md-2 {
+  width: 16.66%;
+}
+
+.col-md-3 {
+  width: 24.99%;
+}
+
+.col-md-4 {
+  width: 33.33%;
+}
+
+.col-md-5 {
+  width: 41.66%;
+}
+
+.col-md-6 {
+  width: 50%;
+}
+
+.col-md-7 {
+  width: 58.33%;
+}
+
+.col-md-8 {
+  width: 66.66%;
+}
+
+.col-md-9 {
+  width: 74.99%;
+}
+
+.col-md-10 {
+  width: 83.33%;
+}
+
+.col-md-11 {
+  width: 91.66%;
+}
+
+.col-md-12 {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+
+  .wrapper {
+    max-width: 500px;
+  }
+
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    display: block;
+  }
+
+  .col-sm-12 {
+    width: auto
+  }
+
+}
+
+/* End of responsive grid system */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .fullHeight {
   height:100vh

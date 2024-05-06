@@ -42,8 +42,12 @@ export default function MapPage() {
         console.log('NeilTest - buttonClickHandler groupedMapDetails', groupedMapDetails);
         const filteredData = groupedMapDetails.filter(item => item.mapItem === group.mapItem);
         console.log('NeilTest - filteredData', filteredData);
+
+
+
         const detailsOnly = filteredData.map(item => item.details);
         console.log('NeilTest - detailsOnly', detailsOnly);
+
         setChartMapDetails(detailsOnly);
 
         // Toggle the pop ups visibility
@@ -57,40 +61,9 @@ export default function MapPage() {
 	return (
         <div>
             <Header pathname={pathname} />
-            <main className="map-wrapper">
-                <h1>Map page</h1>
-                <Map
-                    ref={mapRef}
-                    mapboxAccessToken={mapboxToken}
-                    mapStyle="mapbox://styles/mapbox/streets-v12"
-                    style={classes.mapStyle}
-                    initialViewState={{ latitude: 51.736449, longitude: -4.049007, zoom: 10 }}
-                    maxZoom={20}
-                    minZoom={3}
-                >
-                    <GeolocateControl position="top-left" />
-                    <NavigationControl position="top-left" />
-                    {groupedMapMarkers.map((item, index) => {
-                        return (
-                            <Marker key={index} longitude={item.longitude} latitude={item.latitude}>
-                                <button
-                                    type="button"
-                                    className="cursor-pointer"
-                                    onClick={(e) => buttonClickHandler(e, item, index)}
-                                >
-                                    {<FaMapMarkerAlt size={30} color="red" />}
-                                </button>
-                            </Marker>
-                        );
-                    })}
-                    {selectedMarker ? (
-                        <div className="pop-up">
-                            <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
-                            {chartMapDetails ? <Chart data={chartMapDetails} /> : <></>}
-                        </div>
-                    ) : console.log('NeilTest - no popup')}
-                </Map>
-            </main>
+            <div className="container">
+                <h1>Contact page</h1>
+            </div>
         </div>
 	);
 }

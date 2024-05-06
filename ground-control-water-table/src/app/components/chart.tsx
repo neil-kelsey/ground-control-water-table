@@ -73,6 +73,17 @@ const Chart = ({ data }) => {
             data: filteredDataWithoutFirstItemTwo,
         }));
         console.log('NeilTest - temperatureChartData', temperatureChartData);
+
+         // Now get the first and last array items so we can set the earliest date and the latest dates
+        // We can use these values for the date range of the calendar - start date and end date
+        const firstItem = filteredDataWithoutFirstItemTwo[0];
+        const lastItem = filteredDataWithoutFirstItemTwo[filteredDataWithoutFirstItemTwo.length - 1];
+        const startDateValue = firstItem.date;
+        const endDateValue = lastItem.date;
+        console.log('NeilTest - dates - startDateValue', startDateValue);
+        console.log('NeilTest - dates - endDateValue', endDateValue);
+        setStartDate(startDateValue);
+        setEndDate(endDateValue);
     }, []); // Empty dependency array to run the effect only once
 
     // Maybe we make this a separate file? - chartFilterFunction
@@ -116,10 +127,33 @@ const Chart = ({ data }) => {
             }))
         : <></> }
 
+        // Now filter out any data that doesn't fit within the startDate and endDate range
+        const filterByDateRange = filteredDataWithoutFirstItem.filter(entry => {
+            // Convert startDate and endDate strings to Date objects
+            const startDateObject = new Date(startDate)
+            const endDateObject = new Date(endDate)
+            console.log('NeilTest - filterClickHandler - typeof startDateObject', typeof startDateObject )
+            
+            // Convert entry.date string to a Date object
+            const entryDate = new Date(entry.date);
+        
+            // Compare entryDate with startDateObject and endDateObject
+            return entryDate >= startDateObject && entryDate <= endDateObject;
+        });
+        console.log('NeilTest - filterClickHandler - filterByDateRange', filterByDateRange);
+
+        { itemName === 'Temperature' ? 
+        setTemperatureChartData(prevChart => ({
+            ...prevChart,
+            data: filterByDateRange,
+            series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
+        }))
+        : <></> }
+
         { itemName === 'Battery' ? 
             setBatteryChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'bar', xKey: 'date', yKey: 'battery' }]
             }))
         : <></> }
@@ -127,7 +161,7 @@ const Chart = ({ data }) => {
         { itemName === 'Speed' ? 
             setSpeedChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'line', xKey: 'date', yKey: 'speed' }]
             }))
         : <></> }
@@ -135,7 +169,7 @@ const Chart = ({ data }) => {
         { itemName === 'Alarm' ? 
             setAlarmChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'bar', xKey: 'date', yKey: 'alarm' }]
             }))
         : <></> }
@@ -143,7 +177,7 @@ const Chart = ({ data }) => {
         { itemName === 'State' ? 
             setStateChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'bar', xKey: 'date', yKey: 'state' }]
             }))
         : <></> }
@@ -151,7 +185,7 @@ const Chart = ({ data }) => {
         { itemName === 'Height' ? 
             setHeightChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'bar', xKey: 'date', yKey: 'height' }]
             }))
         : <></> }
@@ -159,7 +193,7 @@ const Chart = ({ data }) => {
         { itemName === 'Oxygen' ? 
             setOxygenChartData(prevChart => ({
                 ...prevChart,
-                data: filteredDataWithoutFirstItem,
+                data: filterByDateRange,
                 series: [{ type: 'bar', xKey: 'date', yKey: 'oxygen' }]
             }))
         : <></> }

@@ -4,8 +4,12 @@ import React, { useEffect, useState } from 'react';
 import TableComponent from '../components/table';
 import riverSensorData from '../data/river_sensor_data.json';
 import { decodeAndMutateData } from '../functions/decodeAndMutateData';
+import Header from '../components/header';
+import { usePathname } from 'next/navigation';
 
 const TablePage = () => {
+    const pathname = usePathname();
+    console.log('NeilTest - pathname', pathname);
     const [data, setData] = useState()
     useEffect(() => {
         const data = decodeAndMutateData(riverSensorData);
@@ -15,8 +19,14 @@ const TablePage = () => {
 
     return (
         <div>
-            <h1>Table page</h1>
-            {data ? <TableComponent data={data} /> : <div>No data / loading component</div>}
+            <Header pathname={pathname} />
+            {/* <h1>Table page</h1>
+            {data ? <TableComponent data={data} /> : <div>No data / loading component</div>} */}
+            <div className="footer">
+                <div className="container">
+                    <h1>This will be the footer</h1>
+                </div>
+            </div>
         </div>
     );
 };
