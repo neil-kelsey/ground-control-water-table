@@ -15,14 +15,26 @@ const DateRange = ({ startDate, setStartDate, endDate, setEndDate }) => {
 
     return (
         <div className='date-picker'>
-            <Calendar
-                date={new Date(startDate)}
-                onChange={handleSetStartDate}
-            />
-            <Calendar
-                date={new Date(endDate)}
-                onChange={handleSetEndDate}
-            />
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 text-align-center">
+                        <h2 className="margin-left-lg">Start date</h2>
+                        <Calendar
+                            date={new Date(startDate)}
+                            onChange={handleSetStartDate}
+                        />
+                    </div>
+                    <div className="col-md-6 text-align-center">
+                        <h2 className="margin-left-lg">End date</h2>
+                        <Calendar
+                            date={new Date(endDate)}
+                            onChange={handleSetEndDate}
+                        />
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     );
 };

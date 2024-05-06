@@ -1,5 +1,6 @@
 import React from 'react';
 import DateRange from './dateRange';
+import { useToggle } from "../functions/useToggle";
 
 const TableFilter = ({
   searchTerm,
@@ -12,15 +13,19 @@ const TableFilter = ({
   handleEndDateChange,
   data,
 }) => {
+  const [visible, toggle] = useToggle(false);
   return (
-    <div>
+    <div className="filter-panel margin-bottom-xl">
       <input
         type="text"
         placeholder="Search by ID"
         value={searchTerm}
+        className="margin-right-md"
         onChange={(e) => handleSearchChange(e.target.value)}
       />
       <select
+        className="sample"
+        className="margin-right-md"
         value={selectedSensorId}
         onChange={(e) => handleSensorIdChange(e.target.value)}
       >
@@ -29,12 +34,23 @@ const TableFilter = ({
           <option key={sensorId} value={sensorId}>{sensorId}</option>
         ))}
       </select>
-      <DateRange
-        startDate={startDate}
-        setStartDate={handleStartDateChange}
-        endDate={endDate}
-        setEndDate={handleEndDateChange}
-      />
+      <button onClick={toggle}>
+        {visible ? (
+          <span>Hide date range</span>
+        ) : (
+          <span>Show date range</span>
+        )}
+      </button>
+      {visible ? (
+        <DateRange
+          startDate={startDate}
+          setStartDate={handleStartDateChange}
+          endDate={endDate}
+          setEndDate={handleEndDateChange}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
