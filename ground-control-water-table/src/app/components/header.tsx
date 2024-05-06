@@ -13,13 +13,15 @@ const Header = (props) => {
                 <div className="row">
                     <div className="col-md-3">
                         <h1>
-                            <Image
-                                src="/site-logo.png"
-                                alt="Ground Control - Water Table"
-                                width={30}
-                                height={30}
-                                priority
-                            />
+                            <a href="https://www.groundcontrol.com/">
+                                <Image
+                                    src="/site-logo.png"
+                                    alt="Ground Control - Water Table"
+                                    width={30}
+                                    height={30}
+                                    priority
+                                />
+                            </a>
                             Water table
                         </h1>
                     </div>

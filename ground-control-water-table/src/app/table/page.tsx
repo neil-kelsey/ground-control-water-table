@@ -6,6 +6,7 @@ import riverSensorData from '../data/river_sensor_data.json';
 import { decodeAndMutateData } from '../functions/decodeAndMutateData';
 import Header from '../components/header';
 import { usePathname } from 'next/navigation';
+import Footer from '../components/footer';
 
 const TablePage = () => {
     const pathname = usePathname();
@@ -20,13 +21,11 @@ const TablePage = () => {
     return (
         <div>
             <Header pathname={pathname} />
-            {/* <h1>Table page</h1>
-            {data ? <TableComponent data={data} /> : <div>No data / loading component</div>} */}
-            <div className="footer">
-                <div className="container">
-                    <h1>This will be the footer</h1>
-                </div>
+            <div className='container'>
+                <h1>Table page</h1>
+                {/* {data ? <TableComponent data={data} /> : <div>No data / loading component</div>} */}
             </div>
+            <Footer pathname={pathname} />
         </div>
     );
 };
