@@ -383,14 +383,18 @@ xl- 1201px and above for extra large screens like TV. */
   height: 100%;
 }
 
-.left {
-  float:left;
-  width:20%;
-  background: #ff5500;
+.filters {
+  padding: 0;
 }
 
-.main {
-  float:left;
-  width:75%;
-  background: #00FF00;
+.filters li {
+  font-size:16px;
+  font-weight: 100;
+  margin:0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.filters li.selected {
+  border:none;
 }

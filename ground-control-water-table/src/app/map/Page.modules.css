@@ -18,6 +18,20 @@
     top:20px;
     cursor: pointer;
   }
+
+  .map-container .map-button {
+    color: var(--white);
+    padding: var(--size-md) var(--size-lg);
+    border: 1px solid var(--hyperlink-selected);
+    border-radius: var(--size-sm);
+    outline: none;
+    background: var(--hyperlink);
+  }
+  
+  .map-container .map-button:hover {
+    cursor: pointer;
+    background: var(--hyperlink-selected);
+  }
   
   /* End of Map styling */
 

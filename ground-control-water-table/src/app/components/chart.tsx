@@ -4,6 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { AgChartsReact } from 'ag-charts-react';
 import { useToggle } from "../functions/useToggle";
 import DateRange from '../components/dateRange';
+import { FaBatteryFull } from "react-icons/fa";
+import { FaTemperatureHigh } from "react-icons/fa";
+import { IoSpeedometerSharp } from "react-icons/io5";
+import { IoAlarm } from "react-icons/io5";
+import { FaWater } from "react-icons/fa";
+import { MdHeight } from "react-icons/md";
+import { SiOxygen } from "react-icons/si";
 
 const Chart = ({ data }) => {
     const [visible, toggle] = useToggle(false);
@@ -11,7 +18,7 @@ const Chart = ({ data }) => {
     const [endDate, setEndDate] = useState(new Date().toISOString());
     console.log('NeilTest - dates - startDate', startDate);
     console.log('NeilTest - dates - endDate', endDate);
-
+    
     // Which chart do we want to show by default, by default I chose temperature
     const [chartType, setChartType] = useState('Temperature');
     const [temperatureChartData, setTemperatureChartData] = useState({
@@ -200,28 +207,26 @@ const Chart = ({ data }) => {
 
         console.log('NeilTest - filterClickHandler - temperatureChartData', temperatureChartData)
     }
-    
-    
 
     return (
         <div className="container">
             <div className="row">
                 <div className="col-md-2">
-                    <p onClick={toggle}>Date range</p>
+                <h2 className="margin-bottom-md">Filters</h2>
+                    <button className="map-button margin-bottom-lg" onClick={toggle}>Date range</button>
                     {visible ? (
                         <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
                     ) : (
                         <></>
                     )}
-                    <h2>Filters</h2>
-                    <ul>
-                        <li onClick={() => filterClickHandler('Battery')}>Battery</li>
-                        <li onClick={() => filterClickHandler('Temperature')}>Temperature</li>
-                        <li onClick={() => filterClickHandler('Speed')}>Speed</li>
-                        <li onClick={() => filterClickHandler('Alarm')}>Alarm</li>
-                        <li onClick={() => filterClickHandler('State')}>State</li>
-                        <li onClick={() => filterClickHandler('Height')}>Height</li>
-                        <li onClick={() => filterClickHandler('Oxygen')}>Oxygen</li>
+                    <ul className="filters">
+                    <li className={chartType === "Temperature" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Temperature')}><FaTemperatureHigh size={30} />Temperature</li>
+                        <li className={chartType === "Battery" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Battery')}><FaBatteryFull size={30} /> Battery</li>
+                        <li className={chartType === "Speed" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Speed')}><IoSpeedometerSharp size={30} />Speed</li>
+                        <li className={chartType === "Alarm" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Alarm')}><IoAlarm size={30} />Alarm</li>
+                        <li className={chartType === "State" ? "filter selected" : "filter"} onClick={() => filterClickHandler('State')}><FaWater size={30} />State</li>
+                        <li className={chartType === "Height" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Height')}><MdHeight size={30} />Height</li>
+                        <li className={chartType === "Oxygen" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Oxygen')}><SiOxygen size={30} />Oxygen</li>
                     </ul>
                 </div>
                 <div className="col-md-10">
