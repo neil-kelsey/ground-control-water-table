@@ -204,35 +204,36 @@ const Chart = ({ data }) => {
     
 
     return (
-        <div>
-            <div className="left">
-                <h1>AG Chart component</h1>
-                <p onClick={toggle}>Date range</p>
-                {visible ? (
-                    <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
-                ) : (
-                    <></>
-                )}
-                <h2>Filters</h2>
-                <ul>
-                    <li onClick={() => filterClickHandler('Battery')}>Battery</li>
-                    <li onClick={() => filterClickHandler('Temperature')}>Temperature</li>
-                    <li onClick={() => filterClickHandler('Speed')}>Speed</li>
-                    <li onClick={() => filterClickHandler('Alarm')}>Alarm</li>
-                    <li onClick={() => filterClickHandler('State')}>State</li>
-                    <li onClick={() => filterClickHandler('Height')}>Height</li>
-                    <li onClick={() => filterClickHandler('Oxygen')}>Oxygen</li>
-                </ul>
-            </div>
-            <div className="main">
-                <div className="fullHeight">
-                    {chartType === 'Temperature' && temperatureChartData ? <span>Temperature<AgChartsReact options={temperatureChartData} /></span> : <></>}
-                    {chartType === 'Battery' && batteryChartData ? <span>Battery<AgChartsReact options={batteryChartData} /></span> : <></>}
-                    {chartType === 'Speed' && speedChartData ? <span>Speed<AgChartsReact options={speedChartData} /></span> : <></>}
-                    {chartType === 'Alarm' && alarmChartData ? <span>Alarm<AgChartsReact options={alarmChartData} /></span> : <></>}
-                    {chartType === 'State' && stateChartData ? <span>State<AgChartsReact options={stateChartData} /></span> : <></>}
-                    {chartType === 'Height' && heightChartData ? <span>Height<AgChartsReact options={heightChartData} /></span> : <></>}
-                    {chartType === 'Oxygen' && oxygenChartData ? <span>Oxygen<AgChartsReact options={oxygenChartData} /></span> : <></>}
+        <div className="container">
+            <div className="row">
+                <div className="col-md-2">
+                    <p onClick={toggle}>Date range</p>
+                    {visible ? (
+                        <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
+                    ) : (
+                        <></>
+                    )}
+                    <h2>Filters</h2>
+                    <ul>
+                        <li onClick={() => filterClickHandler('Battery')}>Battery</li>
+                        <li onClick={() => filterClickHandler('Temperature')}>Temperature</li>
+                        <li onClick={() => filterClickHandler('Speed')}>Speed</li>
+                        <li onClick={() => filterClickHandler('Alarm')}>Alarm</li>
+                        <li onClick={() => filterClickHandler('State')}>State</li>
+                        <li onClick={() => filterClickHandler('Height')}>Height</li>
+                        <li onClick={() => filterClickHandler('Oxygen')}>Oxygen</li>
+                    </ul>
+                </div>
+                <div className="col-md-10">
+                    <div className="chart-container">
+                        {chartType === 'Temperature' && temperatureChartData ? <span><AgChartsReact options={temperatureChartData} /></span> : <></>}
+                        {chartType === 'Battery' && batteryChartData ? <span><AgChartsReact options={batteryChartData} /></span> : <></>}
+                        {chartType === 'Speed' && speedChartData ? <span><AgChartsReact options={speedChartData} /></span> : <></>}
+                        {chartType === 'Alarm' && alarmChartData ? <span><AgChartsReact options={alarmChartData} /></span> : <></>}
+                        {chartType === 'State' && stateChartData ? <span><AgChartsReact options={stateChartData} /></span> : <></>}
+                        {chartType === 'Height' && heightChartData ? <span><AgChartsReact options={heightChartData} /></span> : <></>}
+                        {chartType === 'Oxygen' && oxygenChartData ? <span><AgChartsReact options={oxygenChartData} /></span> : <></>}
+                    </div>
                 </div>
             </div>
         </div>

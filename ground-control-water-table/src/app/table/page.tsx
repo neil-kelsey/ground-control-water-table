@@ -21,7 +21,7 @@ const TablePage = () => {
     return (
         <div>
             <Header pathname={pathname} />
-            <div className='container'>
+            <div className="container margin-top-xxl">
                 <h1>Water table data</h1>
                 {data ? <TableComponent data={data} /> : <div>No data / loading component</div>}
             </div>

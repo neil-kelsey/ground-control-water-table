@@ -1,22 +1,36 @@
 /* Page.module.css */
 
-.map-wrapper {
-    height:100vh;
-    width: 100vw;
-}
+/* Start of Map styling */
 
-/* These should be moved to their own chart modules css or popup component modules css */
+    .map-container {
+        height:90vh;
+    }
+  
+  .map-container button {
+    border:none;
+    background: none;
+  }
+  
+  .map-container .close {
+    position: absolute;
+    z-index: 99;
+    right: 20px;;
+    top:20px;
+    cursor: pointer;
+  }
+  
+  /* End of Map styling */
 
-.pop-up {
-    position: relative;
-    width: calc(100vw - 80px);
-    height: calc(100vh - 80px);
-    background: #fff;
-    margin: 30px;
-    padding: 30px;
-    color: #000;
-}
+  /* Start of pop up styling */
 
-.close {
-	float: right;
-}
+    .pop-up {
+        position: relative;
+        max-width: 1280px;
+        height: 70vh;
+        margin: var(--size-xl) auto;
+        padding: var(--size-lg);
+        background: var(--white);
+        overflow: hidden;
+    }
+
+  /* End of pop up styling */

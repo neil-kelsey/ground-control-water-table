@@ -10,7 +10,9 @@ import { decodeAndMutateData } from "../functions/decodeAndMutateData";
 import { groupData } from "../functions/groupData";
 import Chart from "../components/chart";
 import Header from '../components/header';
+import Footer from '../components/footer';
 import { usePathname } from 'next/navigation';
+import { IoClose } from "react-icons/io5";
 
 export default function MapPage() {
     const pathname = usePathname();
@@ -57,8 +59,7 @@ export default function MapPage() {
 	return (
         <div>
             <Header pathname={pathname} />
-            <main className="map-wrapper">
-                <h1>Map page</h1>
+            <div className="map-container">
                 <Map
                     ref={mapRef}
                     mapboxAccessToken={mapboxToken}
@@ -85,12 +86,13 @@ export default function MapPage() {
                     })}
                     {selectedMarker ? (
                         <div className="pop-up">
-                            <h1>Hello world<span className="close" onClick={closeClickHandler}>Close</span></h1>
+                            <span className="close" onClick={closeClickHandler}><IoClose size={30} /></span>
                             {chartMapDetails ? <Chart data={chartMapDetails} /> : <></>}
                         </div>
                     ) : console.log('NeilTest - no popup')}
                 </Map>
-            </main>
+            </div>
+            <Footer pathname={pathname} />
         </div>
 	);
 }

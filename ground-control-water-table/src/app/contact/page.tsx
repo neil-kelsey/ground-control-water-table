@@ -61,7 +61,7 @@ export default function MapPage() {
 	return (
         <div>
             <Header pathname={pathname} />
-            <div className="container">
+            <div className="container margin-top-xxl">
                 <h1>Contact page</h1>
             </div>
         </div>
