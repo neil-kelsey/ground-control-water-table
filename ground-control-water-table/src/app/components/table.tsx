@@ -10,7 +10,7 @@ const TableComponent = ({ data }) => {
   const [selectedSensorId, setSelectedSensorId] = useState('');
   const [visibleRows, setVisibleRows] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20); // Number of items per page
+  const [itemsPerPage] = useState(10); // Number of items per page
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [filteredByDateData, setFilteredByDateData] = useState(data);
@@ -88,7 +88,7 @@ const TableComponent = ({ data }) => {
         data={data}
       />
       {/* End of Search and filter panel */}
-      <table>
+      <table cellSpacing={0} cellPadding={0}>
         <thead>
           <tr>
             <th>ID</th>
@@ -107,14 +107,16 @@ const TableComponent = ({ data }) => {
                 <td>{item.sensorId}</td>
                 <td>{item.details.transmittedAt.iso}</td>
                 <td>
-                  <p onClick={() => toggleVisibility(item.id)}>Show details</p>
+                  <p onClick={() => toggleVisibility(item.id)}>{visibleRows[item.id] ? <span className="link-selected">Hide details</span> : <span className="link">Show details</span>}</p>
                 </td>
               </tr>
               {visibleRows[item.id] && Object.entries(item.details).map(([key, value]) => (
-                <tr key={`${item.id}-${key}`}>
-                  <td colSpan={4}>
-                    <strong>{key}:</strong> 
-                    {typeof value === 'object' ? JSON.stringify(value) : value}
+                <tr className="table-details" key={`${item.id}-${key}`}>
+                  <td colSpan={5}>
+                    <span className="margin-left-lg">
+                      <strong>{key}:</strong> 
+                      {typeof value === 'object' ? JSON.stringify(value) : value}
+                    </span>
                   </td>
                 </tr>
               ))}
