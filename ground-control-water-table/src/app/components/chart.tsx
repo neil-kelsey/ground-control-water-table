@@ -212,22 +212,71 @@ const Chart = ({ data }) => {
         <div className="container">
             <div className="row">
                 <div className="col-md-2">
-                <h2 className="margin-bottom-md">Filters</h2>
+                    <h2 className="margin-bottom-xl">Filters</h2>
                     <button className="map-button margin-bottom-lg" onClick={toggle}>Date range</button>
                     {visible ? (
                         <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
                     ) : (
                         <></>
                     )}
-                    <ul className="filters">
-                    <li className={chartType === "Temperature" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Temperature')}><FaTemperatureHigh size={30} />Temperature</li>
-                        <li className={chartType === "Battery" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Battery')}><FaBatteryFull size={30} /> Battery</li>
-                        <li className={chartType === "Speed" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Speed')}><IoSpeedometerSharp size={30} />Speed</li>
-                        <li className={chartType === "Alarm" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Alarm')}><IoAlarm size={30} />Alarm</li>
-                        <li className={chartType === "State" ? "filter selected" : "filter"} onClick={() => filterClickHandler('State')}><FaWater size={30} />State</li>
-                        <li className={chartType === "Height" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Height')}><MdHeight size={30} />Height</li>
-                        <li className={chartType === "Oxygen" ? "filter selected" : "filter"} onClick={() => filterClickHandler('Oxygen')}><SiOxygen size={30} />Oxygen</li>
-                    </ul>
+                    <div className="filter-buttons">
+                        <div className={chartType === "Temperature" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Temperature')}>
+                            <div className="col-md-4 text-align-center">
+                                <FaTemperatureHigh size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Temperature</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "Battery" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Battery')}>
+                            <div className="col-md-4 text-align-center">
+                                <FaBatteryFull size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Battery</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "Speed" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Speed')}>
+                            <div className="col-md-4 text-align-center">
+                                <IoSpeedometerSharp size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Speed</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "Alarm" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Alarm')}>
+                            <div className="col-md-4 text-align-center">
+                                <IoAlarm size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Alarm</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "State" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('State')}>
+                            <div className="col-md-4 text-align-center">
+                                <FaWater size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">State</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "Height" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Height')}>
+                            <div className="col-md-4 text-align-center">
+                                <MdHeight size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Height</p>
+                            </div>
+                        </div>
+                        <div className={chartType === "Oxygen" ? "filter selected row" : "filter row"} onClick={() => filterClickHandler('Oxygen')}>
+                            <div className="col-md-4 text-align-center">
+                                <SiOxygen size={30} />
+                            </div>
+                            <div className="col-md-8">
+                                <p className="margin-top-sm">Oxygen</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-md-10">
                     <div className="chart-container">

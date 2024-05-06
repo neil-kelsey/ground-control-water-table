@@ -197,7 +197,7 @@ th {
 
 /* Start of padding and margin */
 
-/* In a 'real' project I'd likely have a whole set of these for eg margin-top-sm, padding-bottom-lg etc but for this I'm just creating what I need */
+/* In a 'real' project I'd likely have a whole set of these for eg margin-top-xs, padding-bottom-lg etc but for this I'm just creating what I need */
 
 .padding-left-none {
   padding-left:0;
@@ -233,6 +233,10 @@ th {
 
 .margin-left-md {
   margin-left: var(--size-md)
+}
+
+.margin-top-sm {
+  margin-top: var(--size-sm)
 }
 
 .margin-top-lg {
@@ -397,4 +401,16 @@ xl- 1201px and above for extra large screens like TV. */
 
 .filters li.selected {
   border:none;
+}
+
+.filter-buttons .filter.selected {
+
+  border-bottom:none;
+  padding:0;
+}
+
+.filter-buttons .filter {
+  cursor: pointer;
+  font-size:16px;
+  font-weight: 400;
 }
