@@ -43,27 +43,36 @@ const Chart = ({ data }) => {
         series: [{ type: 'line', xKey: 'date', yKey: 'oxygen' }]
     });
 
-    console.log('NeilTest - temperatureChartData', temperatureChartData);
-    
-    const [chartOptions, setChartOptions] = useState({
-        // Data: Data to be displayed in the chart
-        data: [
-            { month: 'Jan', avgTemp: 2.3, iceCreamSales: 162000 },
-            { month: 'Mar', avgTemp: 6.3, iceCreamSales: 302000 },
-            { month: 'May', avgTemp: 16.2, iceCreamSales: 800000 },
-            { month: 'Jul', avgTemp: 22.8, iceCreamSales: 1254000 },
-            { month: 'Sep', avgTemp: 14.5, iceCreamSales: 950000 },
-            { month: 'Nov', avgTemp: 8.9, iceCreamSales: 200000 },
-        ],
-        // Series: Defines which chart type and data to use
-        series: [{ type: 'bar', xKey: 'month', yKey: 'iceCreamSales' }],
-    });
-
-    console.log('NeilTest - chart - data', data);
-    console.log('NeilTest - chart - chartOptions', chartOptions);
+    console.log('NeilTest - chart data - temperatureChartData', temperatureChartData);
+    console.log('NeilTest - chart data - batteryChartData', batteryChartData);
+    console.log('NeilTest - chart data - speedChartData', speedChartData);
+    console.log('NeilTest - chart data - heightChartData', heightChartData);
+    console.log('NeilTest - chart data - alarmChartData', alarmChartData);
 
     useEffect(() => {
-        console.log('NeilTest test');
+        const filteredDataTwo = data.flatMap(obj => {
+            return Object.values(obj).flatMap(entry => {
+                if (Array.isArray(entry)) {
+                    return entry.map(item => ({
+                        date: item.transmittedAt.iso,
+                        temperature: item.temperature.value
+                    }));
+                }
+            });
+        });
+        console.log('NeilTest - useEffect - filteredDataTwo', filteredDataTwo);
+
+        // This next bit is a bit hacky
+        // There's a bug in filteredData where the first array item is returned empty
+        // I couldn't figure out why, so I've sliced it off
+        const filteredDataWithoutFirstItemTwo = filteredDataTwo.slice(1);
+        console.log('NeilTest - useEffect - filteredDataWithoutFirstItemTwo', filteredDataWithoutFirstItemTwo);
+
+        setTemperatureChartData(prevState => ({
+            ...prevState,
+            data: filteredDataWithoutFirstItemTwo,
+        }));
+        console.log('NeilTest - temperatureChartData', temperatureChartData);
     }, []); // Empty dependency array to run the effect only once
 
     // Maybe we make this a separate file? - chartFilterFunction
@@ -73,7 +82,7 @@ const Chart = ({ data }) => {
         console.log('NeilTest - filterClickHandler - startDate', startDate);
         console.log('NeilTest - filterClickHandler - endDate', endDate);
         console.log('NeilTest - filterClickHandler - startDate data type', typeof startDate);
-
+        
         setChartType(itemName);
         const filteredData = data.flatMap(obj => {
             return Object.values(obj).flatMap(entry => {
@@ -98,7 +107,7 @@ const Chart = ({ data }) => {
         // I couldn't figure out why, so I've sliced it off
         const filteredDataWithoutFirstItem = filteredData.slice(1);
         console.log('NeilTest - filterClickHandler - filteredDataWithoutFirstItem', filteredDataWithoutFirstItem);
-
+    
         { itemName === 'Temperature' ? 
             setTemperatureChartData(prevChart => ({
                 ...prevChart,
@@ -154,7 +163,11 @@ const Chart = ({ data }) => {
                 series: [{ type: 'bar', xKey: 'date', yKey: 'oxygen' }]
             }))
         : <></> }
+
+        console.log('NeilTest - filterClickHandler - temperatureChartData', temperatureChartData)
     }
+    
+    
 
     return (
         <div>
