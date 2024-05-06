@@ -5,7 +5,7 @@
   --size-md: 10px;
   --size-lg: 20px;
   --size-xl: 30px;
-  --size-xxl: 40px;
+  --size-xxl: 60px;
 
   /* Colour variables */
   --lighter-grey: #f5f5f5;
@@ -93,9 +93,10 @@ table {
   text-align: left;
   font-size:12px;
   font-weight: 500;
-
   width:100%;
-  border:1px solid var(--light-grey);
+  border-top:1px solid var(--light-grey);
+  border-right:1px solid var(--light-grey);
+  border-left:1px solid var(--light-grey);
 }
 
 td, th {
@@ -111,6 +112,10 @@ th {
 .table-details td {
   background: var(--lighter-grey);
 }
+
+/* Start of pagination styling */
+
+/* End of pagination styling */
 
 /* End of table styling */
 
@@ -194,6 +199,10 @@ th {
 
 /* In a 'real' project I'd likely have a whole set of these for eg margin-top-sm, padding-bottom-lg etc but for this I'm just creating what I need */
 
+.padding-left-none {
+  padding-left:0;
+}
+
 .margin-right-sm {
   margin-right: var(--size-sm)
 }
@@ -206,14 +215,34 @@ th {
   margin-bottom: var(--size-xl)
 }
 
+.margin-bottom-xxl {
+  margin-bottom: var(--size-xxl)
+}
+
+.margin-bottom-lg {
+  margin-bottom: var(--size-lg)
+}
+
+.margin-bottom-md {
+  margin-bottom: var(--size-md)
+}
+
 .margin-left-lg {
   margin-left: var(--size-lg)
+}
+
+.margin-left-md {
+  margin-left: var(--size-md)
+}
+
+.margin-top-lg {
+  margin-top: var(--size-lg);
 }
 
 .date-picker {
   position:absolute;
   padding: var(--size-md);
-  margin-top: var(--size-lg);
+  margin-top: var(--size-md);
   border: 1px solid var(--hyperlink);
   border-radius: var(--size-sm);
   background: var(--white);
@@ -223,6 +252,7 @@ th {
 /* End of padding and margin overwrites */
 
 .footer {
+  margin-top:var(--size-xl);
   padding: var(--size-sm) 0;
   border-top:1px solid var(--light-grey);
   position: fixed;

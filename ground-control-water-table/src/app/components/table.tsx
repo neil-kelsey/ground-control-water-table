@@ -74,6 +74,18 @@ const TableComponent = ({ data }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = pageNumber => setCurrentPage(pageNumber);
+
+
+
+
+  
+
+  const paginationListSize = filteredData.length / itemsPerPage;
+  console.log('NeilTest - paginationListSize', paginationListSize)
+
+  // If list size is over 20 take first 10 items and the last 20 items and cut out the rest
+
+
   return (
     <div>
       <TableFilter
@@ -88,7 +100,7 @@ const TableComponent = ({ data }) => {
         data={data}
       />
       {/* End of Search and filter panel */}
-      <table cellSpacing={0} cellPadding={0}>
+      <table cellSpacing={0} cellPadding={0} className="margin-bottom-md">
         <thead>
           <tr>
             <th>ID</th>
@@ -126,15 +138,23 @@ const TableComponent = ({ data }) => {
       </table>
 
       {/* Pagination */}
-      <div>
+      <div className="pagination margin-bottom-xxl">
         {filteredData.length > itemsPerPage && (
-          <ul className="pagination">
-            {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }, (_, i) => (
-              <li key={i} className={i + 1 === currentPage ? 'active' : null}>
-                <button onClick={() => paginate(i + 1)}>{i + 1}</button>
-              </li>
-            ))}
-          </ul>
+          <div>
+            <label htmlFor="pageSelect">Page:</label>
+            <select 
+              id="pageSelect"
+              className="margin-left-md"
+              value={currentPage} 
+              onChange={(e) => paginate(parseInt(e.target.value))}
+            >
+              {Array.from({ length: Math.ceil(filteredData.length / itemsPerPage) }, (_, i) => (
+                <option key={i + 1} value={i + 1}>
+                  {i + 1}
+                </option>
+              ))}
+            </select>
+          </div>
         )}
       </div>
     </div>

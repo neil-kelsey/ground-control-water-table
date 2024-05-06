@@ -15,7 +15,7 @@ const TableFilter = ({
 }) => {
   const [visible, toggle] = useToggle(false);
   return (
-    <div className="filter-panel margin-bottom-xl">
+    <div className="filter-panel margin-bottom-md">
       <input
         type="text"
         placeholder="Search by ID"
