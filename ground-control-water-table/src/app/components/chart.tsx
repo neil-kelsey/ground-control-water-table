@@ -11,7 +11,14 @@ const Chart = ({ data }) => {
     const [endDate, setEndDate] = useState(new Date().toISOString());
     console.log('NeilTest - dates - startDate', startDate);
     console.log('NeilTest - dates - endDate', endDate);
-    console.log('NeilTest - chart - data testtest', data);
+
+    // Which chart do we want to show by default, by default I chose temperature
+    const [chartType, setChartType] = useState('Temperature');
+    const [temperatureChartData, setTemperatureChartData] = useState({
+        data: [], // initilize with empty array
+        series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
+    });
+    
     const [chartOptions, setChartOptions] = useState({
         // Data: Data to be displayed in the chart
         data: [
@@ -24,7 +31,10 @@ const Chart = ({ data }) => {
         ],
         // Series: Defines which chart type and data to use
         series: [{ type: 'bar', xKey: 'month', yKey: 'iceCreamSales' }],
-      });
+    });
+
+    console.log('NeilTest - chart - data', data);
+    console.log('NeilTest - chart - chartOptions', chartOptions);
 
     useEffect(() => {
         console.log('NeilTest test');
@@ -37,6 +47,25 @@ const Chart = ({ data }) => {
         console.log('NeilTest - filterClickHandler - startDate', startDate);
         console.log('NeilTest - filterClickHandler - endDate', endDate);
         console.log('NeilTest - filterClickHandler - startDate data type', typeof startDate);
+
+        setChartType(itemName);
+        const filteredData = data.flatMap(obj => {
+            return Object.values(obj).flatMap(entry => {
+                if (Array.isArray(entry)) {
+                    return entry.map(item => ({
+                        date: item.transmittedAt.iso,
+                        ...(itemName === 'Temperature' ? { temperature: item.temperature.value } : {}),
+                        ...(itemName === 'Battery' ? { battery: item.battery.value } : {}),
+                        ...(itemName === 'Speed' ? { speed: parseFloat(item.speed.value) } : {}), // convert string value to a number
+                        ...(itemName === 'Alarm' ? { alarm: item.alarm } : {}),
+                        ...(itemName === 'State' ? { state: item.state.value } : {}),
+                        ...(itemName === 'Height' ? { height: parseFloat(item.height.value) } : {}), // convert string value to a number
+                        ...(itemName === 'Oxygen' ? { oxygen: item.oxygen.value } : {})
+                    }));
+                }
+            });
+        });
+        console.log('NeilTest - filterClickHandler - filteredData', filteredData);
     }
 
     return (
