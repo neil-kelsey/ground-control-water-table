@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, CSSProperties } from "react";
 import Map, { Marker, Popup, NavigationControl, GeolocateControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import classes from "./Page.modules.css";
@@ -13,8 +13,17 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import { usePathname } from 'next/navigation';
 import { IoClose } from "react-icons/io5";
+import BeatLoader from "react-spinners/BeatLoader";
+import Loading from '../components/loading';
+
+const override: CSSProperties = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
 
 export default function MapPage() {
+    const [loading, setLoading] = useState(true);
     const pathname = usePathname();
 	const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
     const [selectedMarker, setSelectedMarker] = useState(false);
@@ -23,9 +32,10 @@ export default function MapPage() {
     const [groupedMapMarkers, setGroupedMapMarkers] = useState([]);
     const [chartMapDetails, setChartMapDetails] = useState([]);
 	const mapRef = useRef(null);
-    console.log('NeilTest - selectedMarker', selectedMarker);
+    console.log('NeilTest - loading', loading);
 
     useEffect(() => {
+        setLoading(true);
         const data = decodeAndMutateData(riverSensorData);
         console.log('NeilTest - data', data);
         const { groupedMapDetails, groupedMapMarkers } = groupData(data); // Call the groupData function with your data
@@ -34,6 +44,7 @@ export default function MapPage() {
         console.log('NeilTest - Retrieved groupedMapMarkers:', groupedMapMarkers);
         setGroupedMapDetails(groupedMapDetails);
         setGroupedMapMarkers(groupedMapMarkers);
+        setLoading(false);
     }, []); // Empty dependency array to run the effect only once
 
     const buttonClickHandler = (e, group, index) => {
@@ -58,6 +69,8 @@ export default function MapPage() {
 
 	return (
         <div>
+            {/* If the loading start is true then show the loading component */}
+            {loading ? <Loading /> : <></>}
             <Header pathname={pathname} />
             <div className="map-container">
                 <Map
@@ -92,6 +105,8 @@ export default function MapPage() {
                     ) : console.log('NeilTest - no popup')}
                 </Map>
             </div>
+
+            
             <Footer pathname={pathname} />
         </div>
 	);

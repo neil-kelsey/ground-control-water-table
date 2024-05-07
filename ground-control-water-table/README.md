@@ -22,7 +22,7 @@ This has been a fun project but I've had to call it a day at this stage, so here
 - Map chart data doesn't work on Alarm and State, this is because the data is boolean, you can display boolean data in AG Charts but I didn't implement this in time
 - When you open the data range you have to press the close button again to close the panel, this is kind of annoying - I would implement a event listener and if the user clicks anywhere that isn't the panel then we close the panel
 - Language strings - it's annoying having text strings everywhere, I would rip them all out and add language strings, also I had some cool ideas for right to left languages and this project is built with that in mind so I could easily implement it
-- Unit tests!
+- Unit tests! It really pains me that I haven't implement unit tests due to time constraints - all of my work in my current position is writen alongside with unit tests
 - More componentization - I've made the table in to a component but really I'd like to have a table row component, maybe a table header component and so on
 - I wish I'd changed the time format to something more human readable
 - Adding Y axis labelling for the charts for the units of measurement
@@ -55,8 +55,5 @@ This has been a fun project but I've had to call it a day at this stage, so here
 
 
 ### I'll call it a day on this project when
-
-- mobile styling is done
-- We have at least one unit test
 - Loading spinner
 - remove logging
