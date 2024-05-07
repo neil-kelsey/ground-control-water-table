@@ -51,4 +51,10 @@
       padding-left:0;
     }
 
+    @media (max-width: 1280px) {
+      .pop-up {
+        margin:20px 50px;
+      }
+    }
+
   /* End of pop up styling */
