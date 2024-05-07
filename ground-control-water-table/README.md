@@ -14,7 +14,8 @@ pnpm dev
 bun dev
 ```
 
-## Things missing
+## Things I'd improve
+This has been a fun project but I've had to call it a day at this stage, so here's a list of all the things I'd like to improve
 
 ### Functionality
 - The main functionality missing is URL params so the user could share pages / bookmark them etc
@@ -32,15 +33,18 @@ bun dev
 - No loading state - need to add a spinner.. I think and hope the app is just about fast enough that I get away without one!
 - I made a custom hook useToggle for showing / hiding content but I only really use this to show the date component, I could expand it's functionality to for the table row show and hide and anywhere else we need that functionality
 - Show date range buttons could benifit from a calendar icon
+- No account or language select on mobile view
 
 
 ### Styling
-- I would like to refine the sensor select element - the styling could be improved, the drop down items are all very squashed together
+- I would like to refine the sensor select element - the styling could be improved, the drop down items are all very squashed together, styling select elements is annoying as you likely need to create a custom version
 - I would have liked to implemented the language select drop down menu and at a stretch actual language selection
 - A Login holding page for the account icon would have also been nice
 - I've done a little css modules which is great - but I ended up just dumping a load of the CSS in the globals.css due to time constraints
 - Linting
+- Naming conventions and naming stuff in general, some of the functions could be named better - naming stuff is hard! And a standard naming convention - again implementing some linting rules would help tidy this
 - The branding is ok, colours and fonts, look and feel etc but I'd like to refine it further
+- Chart component feels very v1 and could be refined - by default I'd likely show just the last months worth of data instead of the whole set, maybe some common search options like 'View last months data' or 'previous month' to jump the whole thing back one month .. something like that, it feels slightly cluttered atm - those time stamps at the bottom don't help!
 
 ### Other stuff missing
 - Accessibility testing - although I've built the app with accessibility in mind I haven't done an audit
@@ -52,4 +56,5 @@ bun dev
 
 - mobile styling is done
 - We have at least one unit test
+- Loading spinner
 - remove logging

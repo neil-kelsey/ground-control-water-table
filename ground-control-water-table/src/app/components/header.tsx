@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { TbWorld } from "react-icons/tb";
 import { MdAccountCircle } from "react-icons/md";
 import { useToggle } from "../functions/useToggle";
+import { IoClose } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = (props) => {
     const pathname = props.pathname;
@@ -27,11 +29,9 @@ const Header = (props) => {
                             Water table
                         </h1>
                     </div>
-                    <div className="col-md-6 text-align-center">
-                        <div onClick={toggle} className="icon">
-                            <div className="hamburger"></div>
-                            <div className="hamburger"></div>
-                            <div className="hamburger"></div>
+                    <div className="col-md-6 col-sm-12 text-align-center">
+                        <div onClick={toggle} className="burger-menu">
+                            {visible ? <IoClose size={30} /> : <RxHamburgerMenu size={30} />}
                         </div>
                         <ul className={visible ? "main-menu" : "mobile-invisible main-menu"}>
                             <li className={pathname === "/" ? "selected" : ""}><Link key={"/"} href={"/"}>Home</Link></li>
@@ -39,9 +39,9 @@ const Header = (props) => {
                             <li className={pathname === "/contact" ? "selected" : ""}><Link key={"/contact"} href={"/contact"}>Contact</Link></li>
                         </ul>
                     </div>
-                    <div className="col-md-3 text-align-right">
-                        <TbWorld size={25} className="header-icons margin-right-sm" />
-                        <MdAccountCircle size={25} className="header-icons"/>
+                    <div className="col-md-3 text-align-right mobile-invisible">
+                        <TbWorld size={20} className="header-icons margin-right-sm" />
+                        <MdAccountCircle size={20} className="header-icons"/>
                     </div>
                 </div>
             </div>

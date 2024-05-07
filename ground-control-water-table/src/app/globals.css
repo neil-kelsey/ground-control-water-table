@@ -173,8 +173,6 @@ th {
   margin:0 auto;
 }
 
-/* TODO - Move these header styles in to a header module CSS */
-
 .header {
   padding: var(--size-sm) 0;
   border-bottom:1px solid var(--light-grey);
@@ -199,6 +197,14 @@ th {
 .header .header-icons {
   filter: invert(44%) sepia(89%) saturate(2582%) hue-rotate(164deg) brightness(99%) contrast(101%);
   margin-top: var(--size-xs);
+}
+
+.burger-menu {
+  cursor: pointer;
+  display:none;
+  position: absolute;
+  top: var(--size-md);
+  right: var(--size-md);
 }
 
 /* Start of padding and margin */
@@ -412,60 +418,46 @@ xl- 1201px and above for extra large screens like TV. */
     margin:0;
   }
 
+  /* Start of header and mobile menu styling */
 
+  .header {
+    padding: var(--size-sm) 0 0 0;
+  }
 
+  .header h1 {
+    position:initial;
+    padding:0 0 var(--size-sm) 0;
+  }
 
+  .burger-menu {
+    display:initial;
+  }
 
+  .main-menu {
+    position: relative;
+    right: 8px;
+    margin:0;
+    width: calc(100% + 16px);
+  }
 
+  .main-menu li {
+    display:block;
+    margin:0;
+    border-top: 1px solid var(--light-grey);
+    background: var(--lighter-grey);
+  }
 
+  .selected {
+    border:none;
+  }
 
-  /* Start of mobile menu styling */
-
-  h1 {
-    color: #999;
-    padding: 10px;
- }
-  .icon {
-    cursor: pointer;
-    padding: 10px;
- }
-  .icon .hamburger {
-    width: 50px;
-    height: 5px;
-    background-color: #999;
-    margin-top: 5px;
- }
-  ul {
-    list-style: none;
-    width: 100%;
-    padding: 0;
-    border-bottom: 1px solid #999;
- }
-  ul a {
-    color: #999;
-    text-decoration: none;
- }
-  ul a li {
-    text-align: center;
-    padding: 10px;
-    border-top: 1px solid #999;
-    transition: all 0.3s ease;
- }
-  li:hover {
-    background-color: #999;
-    color: white;
-    transform: translateX(-10px);
- }
-  
-
-
-
-    
-  
+  .main-menu a, .main-menu li, .selected, .selected a {
+    padding: var(--size-lg);
+  }
 
 }
 
-/* End of mobile only styling */
+/* End of header and mobile menu styling */
 
 .chart-container {
   width: 100%;
