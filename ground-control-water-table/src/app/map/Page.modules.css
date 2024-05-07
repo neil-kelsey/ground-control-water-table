@@ -14,8 +14,8 @@
   .map-container .close {
     position: absolute;
     z-index: 99;
-    right: 20px;;
-    top:20px;
+    right: var(--size-lg);
+    top: var(--size-lg);
     cursor: pointer;
   }
 
@@ -56,5 +56,26 @@
         margin:20px 50px;
       }
     }
+
+    @media (max-width: 768px) {
+      .pop-up .container .row {
+        display:inline-block;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pop-up {
+        margin: var(--size-lg);
+        padding: var(--size-md) var(--size-md) var(--size-md) 0;
+      }
+
+      .map-container .close {
+        right: var(--size-md);
+        top: var(--size-md);
+      }
+    }
+
+
+  
 
   /* End of pop up styling */

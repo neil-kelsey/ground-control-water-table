@@ -34,6 +34,7 @@ This has been a fun project but I've had to call it a day at this stage, so here
 - I made a custom hook useToggle for showing / hiding content but I only really use this to show the date component, I could expand it's functionality to for the table row show and hide and anywhere else we need that functionality
 - Show date range buttons could benifit from a calendar icon
 - No account or language select on mobile view
+- I'd like to do more browser and device testing and optimise the design for popular set ups
 
 
 ### Styling

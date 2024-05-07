@@ -40,8 +40,8 @@ const Header = (props) => {
                         </ul>
                     </div>
                     <div className="col-md-3 text-align-right mobile-invisible">
-                        <TbWorld size={20} className="header-icons margin-right-sm" />
-                        <MdAccountCircle size={20} className="header-icons"/>
+                        <TbWorld size={25} className="header-icons margin-right-sm" />
+                        <MdAccountCircle size={25} className="header-icons"/>
                     </div>
                 </div>
             </div>

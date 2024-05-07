@@ -211,7 +211,7 @@ const Chart = ({ data }) => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-2">
+                <div className="col-md-2 col-sm-12">
                     <h2 className="margin-bottom-xl margin-left-lg">Filters</h2>
                     <button className="map-button margin-bottom-xl margin-left-lg" onClick={toggle}>{visible ? "Hide date range" : "Show date range" }</button>
                     {visible ? (
@@ -278,15 +278,15 @@ const Chart = ({ data }) => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-10">
+                <div className="col-md-10 col-sm-12">
                     <div className="chart-container">
-                        {chartType === 'Temperature' && temperatureChartData ? <span><AgChartsReact options={temperatureChartData} /></span> : <></>}
-                        {chartType === 'Battery' && batteryChartData ? <span><AgChartsReact options={batteryChartData} /></span> : <></>}
-                        {chartType === 'Speed' && speedChartData ? <span><AgChartsReact options={speedChartData} /></span> : <></>}
-                        {chartType === 'Alarm' && alarmChartData ? <span><AgChartsReact options={alarmChartData} /></span> : <></>}
-                        {chartType === 'State' && stateChartData ? <span><AgChartsReact options={stateChartData} /></span> : <></>}
-                        {chartType === 'Height' && heightChartData ? <span><AgChartsReact options={heightChartData} /></span> : <></>}
-                        {chartType === 'Oxygen' && oxygenChartData ? <span><AgChartsReact options={oxygenChartData} /></span> : <></>}
+                        {chartType === 'Temperature' && temperatureChartData ? <AgChartsReact options={temperatureChartData} /> : <></>}
+                        {chartType === 'Battery' && batteryChartData ? <AgChartsReact options={batteryChartData} /> : <></>}
+                        {chartType === 'Speed' && speedChartData ? <AgChartsReact options={speedChartData} /> : <></>}
+                        {chartType === 'Alarm' && alarmChartData ? <AgChartsReact options={alarmChartData} /> : <></>}
+                        {chartType === 'State' && stateChartData ? <AgChartsReact options={stateChartData} /> : <></>}
+                        {chartType === 'Height' && heightChartData ? <AgChartsReact options={heightChartData} /> : <></>}
+                        {chartType === 'Oxygen' && oxygenChartData ? <AgChartsReact options={oxygenChartData} /> : <></>}
                     </div>
                 </div>
             </div>
