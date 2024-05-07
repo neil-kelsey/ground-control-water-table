@@ -15,11 +15,6 @@ const TableComponent = ({ data }) => {
   const [endDate, setEndDate] = useState();
   const [filteredByDateData, setFilteredByDateData] = useState(data);
 
-  console.log('NeilTest - data', data);
-  console.log('NeilTest - dates startDate', startDate);
-  console.log('NeilTest - dates endDate', endDate);
-  console.log('NeilTest - filteredByDateData', filteredByDateData);
-
   useEffect(() => {
     // Now get the first and last array items so we can set the earliest date and the latest dates
     // We can use these values for the date range of the calendar - start date and end date
@@ -27,16 +22,12 @@ const TableComponent = ({ data }) => {
     const lastItem = data[data.length - 1];
     const startDateValue = firstItem.details.transmittedAt.iso;
     const endDateValue = lastItem.details.transmittedAt.iso;
-    console.log('NeilTest - dates - startDateValue', startDateValue);
-    console.log('NeilTest - dates - endDateValue', endDateValue);
     setStartDate(startDateValue);
     setEndDate(endDateValue);
   }, [data]); // Remove startDate and endDate from the dependency array
 
   useEffect(() => {
     // Filter data based on the startDate and endDate
-    console.log('NeilTest - useEffect - startDate', startDate);
-    console.log('NeilTest - useEffect - endDate', endDate);
     setFilteredByDateData(
       startDate && endDate ? data.filter(item => {
         const itemDate = new Date(item.details.transmittedAt.iso);
@@ -74,18 +65,6 @@ const TableComponent = ({ data }) => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
   const paginate = pageNumber => setCurrentPage(pageNumber);
-
-
-
-
-  
-
-  const paginationListSize = filteredData.length / itemsPerPage;
-  console.log('NeilTest - paginationListSize', paginationListSize)
-
-  // If list size is over 20 take first 10 items and the last 20 items and cut out the rest
-
-
   return (
     <div>
       <TableFilter

@@ -16,8 +16,6 @@ const Chart = ({ data }) => {
     const [visible, toggle] = useToggle(false);
     const [startDate, setStartDate] = useState(new Date().toISOString());
     const [endDate, setEndDate] = useState(new Date().toISOString());
-    console.log('NeilTest - dates - startDate', startDate);
-    console.log('NeilTest - dates - endDate', endDate);
     
     // Which chart do we want to show by default, by default I chose temperature
     const [chartType, setChartType] = useState('Temperature');
@@ -49,13 +47,6 @@ const Chart = ({ data }) => {
         data: [], // initilize with empty array
         series: [{ type: 'line', xKey: 'date', yKey: 'oxygen' }]
     });
-
-    console.log('NeilTest - chart data - temperatureChartData', temperatureChartData);
-    console.log('NeilTest - chart data - batteryChartData', batteryChartData);
-    console.log('NeilTest - chart data - speedChartData', speedChartData);
-    console.log('NeilTest - chart data - heightChartData', heightChartData);
-    console.log('NeilTest - chart data - alarmChartData', alarmChartData);
-
     useEffect(() => {
         const filteredDataTwo = data.flatMap(obj => {
             return Object.values(obj).flatMap(entry => {
@@ -67,40 +58,28 @@ const Chart = ({ data }) => {
                 }
             });
         });
-        console.log('NeilTest - useEffect - filteredDataTwo', filteredDataTwo);
 
         // This next bit is a bit hacky
         // There's a bug in filteredData where the first array item is returned empty
         // I couldn't figure out why, so I've sliced it off
         const filteredDataWithoutFirstItemTwo = filteredDataTwo.slice(1);
-        console.log('NeilTest - useEffect - filteredDataWithoutFirstItemTwo', filteredDataWithoutFirstItemTwo);
-
         setTemperatureChartData(prevState => ({
             ...prevState,
             data: filteredDataWithoutFirstItemTwo,
         }));
-        console.log('NeilTest - temperatureChartData', temperatureChartData);
-
+   
          // Now get the first and last array items so we can set the earliest date and the latest dates
         // We can use these values for the date range of the calendar - start date and end date
         const firstItem = filteredDataWithoutFirstItemTwo[0];
         const lastItem = filteredDataWithoutFirstItemTwo[filteredDataWithoutFirstItemTwo.length - 1];
         const startDateValue = firstItem.date;
         const endDateValue = lastItem.date;
-        console.log('NeilTest - dates - startDateValue', startDateValue);
-        console.log('NeilTest - dates - endDateValue', endDateValue);
         setStartDate(startDateValue);
         setEndDate(endDateValue);
     }, []); // Empty dependency array to run the effect only once
 
     // Maybe we make this a separate file? - chartFilterFunction
     const filterClickHandler = (itemName) => {
-        console.log('NeilTest - filterClickHandler - itemValue', itemName);
-        console.log('NeilTest - filterClickHandler - data', data);
-        console.log('NeilTest - filterClickHandler - startDate', startDate);
-        console.log('NeilTest - filterClickHandler - endDate', endDate);
-        console.log('NeilTest - filterClickHandler - startDate data type', typeof startDate);
-        
         setChartType(itemName);
         const filteredData = data.flatMap(obj => {
             return Object.values(obj).flatMap(entry => {
@@ -118,14 +97,11 @@ const Chart = ({ data }) => {
                 }
             });
         });
-        console.log('NeilTest - filterClickHandler - filteredData', filteredData);
 
         // This next bit is a bit hacky
         // There's a bug in filteredData where the first array item is returned empty
         // I couldn't figure out why, so I've sliced it off
         const filteredDataWithoutFirstItem = filteredData.slice(1);
-        console.log('NeilTest - filterClickHandler - filteredDataWithoutFirstItem', filteredDataWithoutFirstItem);
-    
         { itemName === 'Temperature' ? 
             setTemperatureChartData(prevChart => ({
                 ...prevChart,
@@ -139,16 +115,12 @@ const Chart = ({ data }) => {
             // Convert startDate and endDate strings to Date objects
             const startDateObject = new Date(startDate)
             const endDateObject = new Date(endDate)
-            console.log('NeilTest - filterClickHandler - typeof startDateObject', typeof startDateObject )
-            
             // Convert entry.date string to a Date object
             const entryDate = new Date(entry.date);
         
             // Compare entryDate with startDateObject and endDateObject
             return entryDate >= startDateObject && entryDate <= endDateObject;
         });
-        console.log('NeilTest - filterClickHandler - filterByDateRange', filterByDateRange);
-
         { itemName === 'Temperature' ? 
         setTemperatureChartData(prevChart => ({
             ...prevChart,
@@ -204,8 +176,6 @@ const Chart = ({ data }) => {
                 series: [{ type: 'bar', xKey: 'date', yKey: 'oxygen' }]
             }))
         : <></> }
-
-        console.log('NeilTest - filterClickHandler - temperatureChartData', temperatureChartData)
     }
 
     return (

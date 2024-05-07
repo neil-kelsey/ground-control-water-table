@@ -32,31 +32,20 @@ export default function MapPage() {
     const [groupedMapMarkers, setGroupedMapMarkers] = useState([]);
     const [chartMapDetails, setChartMapDetails] = useState([]);
 	const mapRef = useRef(null);
-    console.log('NeilTest - loading', loading);
 
     useEffect(() => {
         setLoading(true);
         const data = decodeAndMutateData(riverSensorData);
-        console.log('NeilTest - data', data);
         const { groupedMapDetails, groupedMapMarkers } = groupData(data); // Call the groupData function with your data
         // Now you have access to both groupedMapDetails and groupedMapMarkers
-        console.log('NeilTest - Retrieved groupedMapDetails:', groupedMapDetails);
-        console.log('NeilTest - Retrieved groupedMapMarkers:', groupedMapMarkers);
         setGroupedMapDetails(groupedMapDetails);
         setGroupedMapMarkers(groupedMapMarkers);
         setLoading(false);
     }, []); // Empty dependency array to run the effect only once
 
     const buttonClickHandler = (e, group, index) => {
-        console.log('NeilTest - buttonClickHandler e', e);
-        console.log('NeilTest - buttonClickHandler group', group);
-        console.log('NeilTest - buttonClickHandler mapItem', group.mapItem);
-        // console.log('NeilTest - buttonClickHandler data', data);
-        console.log('NeilTest - buttonClickHandler groupedMapDetails', groupedMapDetails);
         const filteredData = groupedMapDetails.filter(item => item.mapItem === group.mapItem);
-        console.log('NeilTest - filteredData', filteredData);
         const detailsOnly = filteredData.map(item => item.details);
-        console.log('NeilTest - detailsOnly', detailsOnly);
         setChartMapDetails(detailsOnly);
 
         // Toggle the pop ups visibility
@@ -102,7 +91,7 @@ export default function MapPage() {
                             <span className="close" onClick={closeClickHandler}><IoClose size={30} /></span>
                             {chartMapDetails ? <Chart data={chartMapDetails} /> : <></>}
                         </div>
-                    ) : console.log('NeilTest - no popup')}
+                    ) : <></>}
                 </Map>
             </div>
 

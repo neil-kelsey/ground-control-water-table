@@ -12,12 +12,10 @@ import Loading from './components/loading';
 const TablePage = () => {
     const [loading, setLoading] = useState(true);
     const pathname = usePathname();
-    console.log('NeilTest - pathname', pathname);
     const [data, setData] = useState()
     useEffect(() => {
         setLoading(true);
         const data = decodeAndMutateData(riverSensorData);
-        console.log('NeilTest - data', data);
         setData(data);
         setLoading(false);
     }, []); // Empty dependency array to run the effect only once
