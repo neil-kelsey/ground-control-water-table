@@ -388,6 +388,10 @@ xl- 1201px and above for extra large screens like TV. */
   .col-sm-12 {
     width: auto
   }
+
+  .col-md-12 {
+    width: calc(100% - 16px);
+  }
 }
 
 /* End of responsive grid system */
@@ -406,6 +410,10 @@ xl- 1201px and above for extra large screens like TV. */
 
   p {
     font-size: 14px;
+  }
+
+  table p {
+    font-size: 11px;
   }
 
   .mobile-invisible {
@@ -467,7 +475,15 @@ xl- 1201px and above for extra large screens like TV. */
 
 }
 
+@media (max-width: 480px) {
+  input, select, button {
+    width:100%
+  }
+}
+
 /* End of header and mobile menu styling */
+
+/* End of mobile responsive styling */
 
 .chart-container {
   width: 100%;

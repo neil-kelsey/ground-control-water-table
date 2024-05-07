@@ -22,8 +22,12 @@ const TablePage = () => {
         <div>
             <Header pathname={pathname} />
             <div className="container margin-top-xxl">
-                <h1>Water table data</h1>
-                {data ? <TableComponent data={data} /> : <div>No data / loading component</div>}
+                <div className="row">
+                    <div className="col-md-12">
+                        <h1>Water table data</h1>
+                        {data ? <TableComponent data={data} /> : <div>No data / loading component</div>}
+                    </div>
+                </div>
             </div>
             <Footer pathname={pathname} />
         </div>

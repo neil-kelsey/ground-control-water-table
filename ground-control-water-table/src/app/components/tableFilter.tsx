@@ -20,12 +20,12 @@ const TableFilter = ({
         type="text"
         placeholder="Search by ID"
         value={searchTerm}
-        className="margin-right-md"
+        className="margin-right-md margin-bottom-md"
         onChange={(e) => handleSearchChange(e.target.value)}
       />
       <select
         className="sample"
-        className="margin-right-md"
+        className="margin-right-md margin-bottom-md"
         value={selectedSensorId}
         onChange={(e) => handleSensorIdChange(e.target.value)}
       >
@@ -34,7 +34,7 @@ const TableFilter = ({
           <option key={sensorId} value={sensorId}>{sensorId}</option>
         ))}
       </select>
-      <button onClick={toggle}>
+      <button className="margin-bottom-md" onClick={toggle}>
         {visible ? (
           <span>Hide date range</span>
         ) : (
