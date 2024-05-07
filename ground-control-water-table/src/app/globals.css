@@ -180,8 +180,6 @@ th {
 }
 
 .header h1 {
-  position: relative;
-  right: 8px;
   display: flex;
   align-items: center; 
   font-weight: 500;
@@ -397,6 +395,18 @@ xl- 1201px and above for extra large screens like TV. */
 /* Start of mobile only styling */
 
 @media (max-width: 768px) {
+
+  h1 {
+    font-size:22px;
+  }
+
+  h2 {
+    font-size:18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
 
   .mobile-invisible {
     display: none;

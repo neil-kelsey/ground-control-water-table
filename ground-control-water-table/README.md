@@ -44,6 +44,7 @@ This has been a fun project but I've had to call it a day at this stage, so here
 - Linting
 - Naming conventions and naming stuff in general, some of the functions could be named better - naming stuff is hard! And a standard naming convention - again implementing some linting rules would help tidy this
 - The branding is ok, colours and fonts, look and feel etc but I'd like to refine it further
+- Some stuff is hard coded like font sizes are all set to pixels, I'd like to explore a better solution
 - Chart component feels very v1 and could be refined - by default I'd likely show just the last months worth of data instead of the whole set, maybe some common search options like 'View last months data' or 'previous month' to jump the whole thing back one month .. something like that, it feels slightly cluttered atm - those time stamps at the bottom don't help!
 
 ### Other stuff missing
