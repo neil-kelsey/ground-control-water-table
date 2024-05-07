@@ -40,7 +40,11 @@ bun dev
 - A Login holding page for the account icon would have also been nice
 - I've done a little css modules which is great - but I ended up just dumping a load of the CSS in the globals.css due to time constraints
 - Linting
+- The branding is ok, colours and fonts, look and feel etc but I'd like to refine it further
 
+### Other stuff missing
+- Accessibility testing - although I've built the app with accessibility in mind I haven't done an audit
+- Improved use of available HTML5 tags like <nav> and <main>
 
 
 
@@ -48,3 +52,4 @@ bun dev
 
 - mobile styling is done
 - We have at least one unit test
+- remove logging
