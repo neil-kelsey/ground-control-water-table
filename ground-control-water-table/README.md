@@ -27,7 +27,7 @@ Then go to `http://localhost:3000/`
 I believe I had met all the requirements, here they are again with an explanation of how and where I believe I had met them
 
 - [x] Consume JSON sample data and decode sensor data
-> This is done in /src/app/functions decodeAndMutateData.tsx - here I decode the package data from base64 and also mutate the data in to the structure I desire
+> This is done in `/src/app/functions/decodeAndMutateData.tsx` - here I decode the package data from base64 and also mutate the data in to the structure I desire
 - [x] Present the data in tabular form; with appropriate:
      - [x] Formatting/styling for data types
      > You can find the table component on the homepage - http://localhost:3000/ each table row has a 'show details' which can be expanded to show all the data available for that unique item
@@ -42,6 +42,17 @@ I believe I had met all the requirements, here they are again with an explanatio
 - [x] Visualise the “sensor” data
      - [x] Impress us by visualising some/all of the sensor data
      > Checkout the 'map' page for a visualization of the data
+
+## My take on the task
+I've recored a short YouTube video explaining my take on the task which I feel is a better approach than discribing in text but the summary is that it was a lot of fun, I was confident about displaying the data in a tabular format but wanted to explore the 'visualization' of the data
+
+After some research I decided I wanted to go down creating some charts of the data, I created a photoshop of my ideas which also helped with the visual UI design and gave me a good direction on where I wanted to take the design language
+
+Next was understanding the data - decoding the payload gave all the details, this straight away made me think of having a 'show details' functionality on the tabular data
+
+I started to notice a lot of the lat and lang values matched and initially I couldn't understand why - I thought the 100,000 data points would be dotted all over the globe
+
+My assumption then was that these were different results from the the same sensors and I could group them accordingly, you can see me mutating the data into groups in `/src/app/functions/groupData.tsx` - I did this separatly and not in the main decoding and mutating function as I only needed to group the data for the visual component
 
 ## Testing
 I've testing the app on Mac M1 silicon - Sonoma, Windows both with in Chrome and Firefox
