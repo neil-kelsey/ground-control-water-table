@@ -78,7 +78,6 @@ const Chart = ({ data }) => {
         setEndDate(endDateValue);
     }, []); // Empty dependency array to run the effect only once
 
-    // Maybe we make this a separate file? - chartFilterFunction
     const filterClickHandler = (itemName) => {
         setChartType(itemName);
         const filteredData = data.flatMap(obj => {
@@ -106,7 +105,6 @@ const Chart = ({ data }) => {
             setTemperatureChartData(prevChart => ({
                 ...prevChart,
                 data: filteredDataWithoutFirstItem,
-                series: [{ type: 'line', xKey: 'date', yKey: 'temperature' }]
             }))
         : <></> }
 

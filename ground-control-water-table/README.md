@@ -44,7 +44,7 @@ I believe I had met all the requirements, here they are again with an explanatio
      > Checkout the 'map' page for a visualization of the data
 
 ## My take on the task
-I've recored a short YouTube video explaining my take on the task which I feel is a better approach than discribing in text but the summary is that it was a lot of fun, I was confident about displaying the data in a tabular format but wanted to explore the 'visualization' of the data
+I've recored a short YouTube video explaining my take on the task `https://youtu.be/Wyg7QjLiu4A` which I feel is a better approach than discribing in text but the summary is that it was a lot of fun, I was confident about displaying the data in a tabular format but wanted to explore the 'visualization' of the data
 
 After some research I decided I wanted to go down creating some charts of the data, I created a photoshop of my ideas which also helped with the visual UI design and gave me a good direction on where I wanted to take the design language
 
@@ -75,6 +75,7 @@ This has been a fun project but I've had to call it a day at this stage, so here
 - Map functionality has two sensor spots on one location - I'd like to implement something on the map so you can choose which you want to view .. or maybe sensor filtering on the maps pop up
 - The 'No data' component for the table is just some text, I'd make this a full component
 - I made a custom hook useToggle for showing / hiding content but I only really use this in a few places, I could expand it's functionality to for the table row show and hide and anywhere else we need that functionality
+- There's some repeated code in chart.tsx - yunk, needs to be turned in to it's own separate function for reusability
 - Show date range buttons could benifit from a calendar icon
 - No account or language select call to actions on mobile view
 - I'd like to do more browser and device testing and optimise the design for popular set ups

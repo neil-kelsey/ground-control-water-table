@@ -27,6 +27,5 @@ export const decodeAndMutateData = (riverSensorData) => {
 
     // Sort the data based on the 'date' property
     const sortedByDateData = [...moveTransmittedAt].sort((a, b) => new Date(a.details.transmittedAt.iso) - new Date(b.details.transmittedAt.iso));
-
     return sortedByDateData;
 };

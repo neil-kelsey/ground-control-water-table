@@ -2,7 +2,6 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { debounce } from 'lodash';
-import DateRange from './dateRange';
 import TableFilter from './tableFilter';
 
 const TableComponent = ({ data }) => {

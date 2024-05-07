@@ -1,7 +1,6 @@
 "use client"; // This is a client component
 
 import { useState } from "react";
-
 import BeatLoader from "react-spinners/BeatLoader";
 
 export default function Loading() {

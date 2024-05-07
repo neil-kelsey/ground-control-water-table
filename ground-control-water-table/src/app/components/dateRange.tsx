@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Calendar } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -12,7 +11,6 @@ const DateRange = ({ startDate, setStartDate, endDate, setEndDate }) => {
         const isoDateString = date.toISOString();
         setEndDate(isoDateString);
     };
-
     return (
         <div className='date-picker'>
             <div className="container">
@@ -33,8 +31,6 @@ const DateRange = ({ startDate, setStartDate, endDate, setEndDate }) => {
                     </div>
                 </div>
             </div>
-
-
         </div>
     );
 };
