@@ -27,21 +27,21 @@ Then go to `http://localhost:3000/`
 I believe I had met all the requirements, here they are again with an explanation of how and where I believe I had met them
 
 - [x] Consume JSON sample data and decode sensor data
-This is done in /src/app/functions decodeAndMutateData.tsx - here I decode the package data from base64 and also mutate the data in to the structure I desire
+> This is done in /src/app/functions decodeAndMutateData.tsx - here I decode the package data from base64 and also mutate the data in to the structure I desire
 - [x] Present the data in tabular form; with appropriate:
      - [x] Formatting/styling for data types
-     You can find the table component on the homepage - http://localhost:3000/ each table row has a 'show details' which can be expanded to show all the data available for that unique item
+     > You can find the table component on the homepage - http://localhost:3000/ each table row has a 'show details' which can be expanded to show all the data available for that unique item
      - [x] Arrangement and presentation
-     The table data is clear and readable on all screensizes
+     > The table data is clear and readable on all screensizes
      - [x] Search/filtering capabilities
-     I have searching / filtering on ID, sensor ID as well as date range filtering
+     > I have searching / filtering on ID, sensor ID as well as date range filtering
      - [x] UI performance for data size
-     Works well for me! There is a small initial load so I have implemented a spinner to tell the user the page is still loading
+     > Works well for me! There is a small initial load so I have implemented a spinner to tell the user the page is still loading
      - [x] Cross browser and screen size considerations
-     Tested on all the sizes and devices mentioned below
+     > Tested on all the sizes and devices mentioned below
 - [x] Visualise the “sensor” data
      - [x] Impress us by visualising some/all of the sensor data
-     Checkout the 'map' page for a visualization of the data
+     > Checkout the 'map' page for a visualization of the data
 
 ## Testing
 I've testing the app on Mac M1 silicon - Sonoma, Windows both with in Chrome and Firefox
