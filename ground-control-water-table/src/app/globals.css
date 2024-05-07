@@ -260,7 +260,7 @@ th {
 .date-picker {
   position:absolute;
   z-index: 999;
-  width:1258px;
+  max-width:1222px;
   padding: var(--size-md);
   margin-top: var(--size-md);
   border: 1px solid var(--hyperlink);
@@ -550,13 +550,17 @@ xl- 1201px and above for extra large screens like TV. */
     word-break: break-word;
   }
   button {
-    width: calc(100% - 20px);
+    width: calc(100% - 2px);
   }
 
   .filter-buttons .filter {
     width:13%;
   }
-  
+
+  .map-container .map-button {
+    width: calc(100% - 20px);
+  }
+
   .pop-up .filter-buttons {
     margin: 0 0 0 var(--size-lg)
   }
