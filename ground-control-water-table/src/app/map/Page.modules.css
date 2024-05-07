@@ -39,12 +39,16 @@
 
     .pop-up {
         position: relative;
-        max-width: 1280px;
+        max-width: 1260px;
         height: 70vh;
         margin: var(--size-xl) auto;
-        padding: var(--size-lg);
+        padding: var(--size-lg) var(--size-lg) var(--size-lg) 0;
         background: var(--white);
         overflow: hidden;
+    }
+
+    .pop-up .col-md-2 {
+      padding-left:0;
     }
 
   /* End of pop up styling */

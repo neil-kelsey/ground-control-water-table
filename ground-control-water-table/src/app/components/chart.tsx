@@ -212,8 +212,8 @@ const Chart = ({ data }) => {
         <div className="container">
             <div className="row">
                 <div className="col-md-2">
-                    <h2 className="margin-bottom-xl">Filters</h2>
-                    <button className="map-button margin-bottom-lg" onClick={toggle}>Date range</button>
+                    <h2 className="margin-bottom-xl margin-left-lg">Filters</h2>
+                    <button className="map-button margin-bottom-xl margin-left-lg" onClick={toggle}>{visible ? "Hide date range" : "Show date range" }</button>
                     {visible ? (
                         <DateRange startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
                     ) : (

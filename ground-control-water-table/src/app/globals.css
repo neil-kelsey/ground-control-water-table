@@ -524,14 +524,19 @@ xl- 1201px and above for extra large screens like TV. */
   border:none;
 }
 
+.filter-buttons .filter {
+  border-left:3px solid var(--white);
+}
+
 .filter-buttons .filter.selected {
 
   border-bottom:none;
-  padding:0;
+  border-left:3px solid var(--hyperlink-selected)
 }
 
 .filter-buttons .filter {
   cursor: pointer;
   font-size:16px;
   font-weight: 400;
+  padding:var(--size-md) 0;
 }
