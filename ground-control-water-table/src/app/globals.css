@@ -473,11 +473,29 @@ xl- 1201px and above for extra large screens like TV. */
     padding: var(--size-lg);
   }
 
+  td {
+    word-break: break-word;
+  }
+
 }
 
 @media (max-width: 480px) {
   input, select, button {
     width:100%
+  }
+  input {
+    width: calc(100% - 24px);
+  }
+  select {
+    width: calc(100% - 2px);
+  }
+  select#pageSelect {
+    width:fit-content
+  }
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
   }
 }
 
