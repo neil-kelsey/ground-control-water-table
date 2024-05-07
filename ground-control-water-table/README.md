@@ -4,7 +4,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
+cd into the correct directory
+`cd .\ground-control-water-table\`
+
 ```bash
+
+npm install
+
 npm run dev
 # or
 yarn dev
@@ -13,6 +19,31 @@ pnpm dev
 # or
 bun dev
 ```
+
+Then go to `http://localhost:3000/`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Testing
+I've testing the app on Mac M1 silicon - Sonoma, Windows both with in Chrome and Firefox
+
+
 
 ## Things I'd improve
 This has been a fun project but I've had to call it a day at this stage, so here's a list of all the things I'd like to improve

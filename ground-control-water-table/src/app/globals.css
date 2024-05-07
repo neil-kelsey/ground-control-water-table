@@ -403,6 +403,10 @@ xl- 1201px and above for extra large screens like TV. */
   height: 100%;
 }
 
+.chart-container div {
+  min-height: 500px;
+}
+
 .filters {
   padding: 0;
 }
